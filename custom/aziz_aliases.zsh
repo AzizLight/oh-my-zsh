@@ -1,3 +1,8 @@
+# Scheduled sleep and wake (OS X only)
+alias ss="sudo pmset schedule sleep"
+alias sw="sudo pmset schedule wake"
+
+# Extract about anything
 alias x="extract"
 
 # df and du
@@ -100,6 +105,7 @@ alias ...="c ../.."
 alias ....="c ../../.."
 alias .....="c ../../../.."
 alias cdd="c -"
+alias -="cd -"
 alias www="c ~/Sites"
 alias cs="c ~/Sources"
 
@@ -111,15 +117,6 @@ alias mkdir="mkdir -vp"
 
 # cal -m [month]
 alias cal="cal -m"
-
-# ----------------------
-
-# --------
-# - MAMP -
-# --------
-
-# MySQL CLI
-alias mysql="/Applications/MAMP/Library/bin/mysql -u root -p"
 
 # ----------------------
 
@@ -157,6 +154,9 @@ alias gems="gem search --remote"
 # ---------
 # - Other -
 # ---------
+
+# autojump
+alias js="jumpstat"
 
 # Validate PHP from the Command Line
 alias vp="php -v && php -d display_errors=on"
