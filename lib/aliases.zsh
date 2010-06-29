@@ -4,7 +4,6 @@
 alias pu='pushd'
 alias po='popd'
 
-alias ss='thin --stats "/thin/stats" start'
 alias sg='ruby script/generate'
 alias sd='ruby script/destroy'
 alias sp='ruby script/plugin'
@@ -21,9 +20,6 @@ alias -- -='cd -'
 
 # Super user
 alias _='sudo'
-alias ss='sudo su -'
-
-#alias g='grep -in'
 
 # Show history
 alias history='fc -l 1'

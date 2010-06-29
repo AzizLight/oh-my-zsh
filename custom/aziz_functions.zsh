@@ -120,6 +120,21 @@ function tm() {
 	cd $1
 }
 
+# Uses the Things command line (things-rb) tool to show all the todo items
+# things-rb: http://github.com/haraldmartin/things-rb
+t () {
+	echo 'Today: \n'
+	command things today
+	echo '\n'
+	
+	echo 'Next: \n'
+	command things next
+	echo '\n'
+	
+	echo 'Someday: \n'
+	command things someday
+}
+
 # Extract about anything
 function extract () {
 	if [ -f $1 ] ; then
@@ -141,3 +156,29 @@ function extract () {
 		echo "'$1' is not a valid file"
 	fi
 }
+
+# Quit an OS X application from the command line
+quit () {
+	for app in $*; do
+		osascript -e 'quit app "'$app'"'
+	done
+}
+
+# Relaunch an OS X application from the command line
+relaunch () {
+	for app in $*; do
+		osascript -e 'quit app "'$app'"';
+		open -a $app
+	done
+}
+
+# function that enables things like 'cd .../dir'
+rationalise-dot() {
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot

@@ -2,6 +2,8 @@
 alias ss="sudo pmset schedule sleep"
 alias sw="sudo pmset schedule wake"
 
+alias s="source /Users/aziz/.oh-my-zsh/custom/aziz_aliases.zsh; source /Users/aziz/.oh-my-zsh/custom/aziz_functions.zsh;source /Users/aziz/.zshrc"
+
 # Extract about anything
 alias x="extract"
 
@@ -27,7 +29,7 @@ alias find-mysql="netstat -ln | grep mysql"
 alias h="history"
 
 # less
-alias -g ":l"=" | less"
+alias -g ":l"=" | less -R"
 
 # Ping
 alias ping="ping -c 5"
@@ -35,7 +37,6 @@ alias google="ping www.google.com"
 
 # make tree a little cooler looking.
 alias tree="tree -CAFa -I 'rhel.*.*.package|.git' --dirsfirst"
-alias t="tree -L 2 -d"
 
 # ------------
 # - CLI OS X -
@@ -44,6 +45,9 @@ alias t="tree -L 2 -d"
 # Empty the trash
 alias e="empty"
 
+# Force Quit Firefox
+alias killff="kill firefox-bin"
+
 # pbcopy and pbpaste
 alias -g ":c"=" | pbcopy"
 alias -g ":p"="pbpaste"
@@ -51,6 +55,7 @@ alias -g ":p"="pbpaste"
 # Open Apps from the command line and open files using Apps from the command line (OS X only!)
 alias o="open -a"
 alias o.="o \"Path Finder\" ."
+alias transmit='open -a Transmit'
 
 # Textmate
 alias -g ":m"=" | mate"
@@ -74,7 +79,7 @@ alias eb="m ~/.oh-my-zsh ~/.zshrc"
 # ----------------------
 
 # ls
-alias ls="ls -FG"
+alias ls="CLICOLOR_FORCE=1 ls -FG"
 alias l="ls -l"
 alias la="ls -A"
 alias ll="ls -Al"
@@ -105,7 +110,6 @@ alias ...="c ../.."
 alias ....="c ../../.."
 alias .....="c ../../../.."
 alias cdd="c -"
-alias -="cd -"
 alias www="c ~/Sites"
 alias cs="c ~/Sources"
 
@@ -123,6 +127,9 @@ alias cal="cal -m"
 # ------------------
 # - Ruby and Rails -
 # ------------------
+
+# open the Pickaxe in Preview.app
+alias pickaxe="open /Users/aziz/Documents/eBooks/Ruby\ -\ Rails/Programming\ Ruby\ 1.9/Programming\ Ruby\ 1.9.pdf"
 
 # Colored ri
 alias ri="ri -f ansi -T"
@@ -158,8 +165,20 @@ alias gems="gem search --remote"
 # autojump
 alias js="jumpstat"
 
+# Force php cli to use the same php.ini config file as the active php
+alias php="php --php-ini /Library/Application\ Support/appsolute/MAMP\ PRO/conf/php.ini"
+
 # Validate PHP from the Command Line
 alias vp="php -v && php -d display_errors=on"
+
+# PHP Interactive Shell
+alias phpshell="php /Users/aziz/Sites/pear/php-shell-cmd.php"
+
+# Open a new Terminal.app window with a different color theme
+alias basic="open /Users/aziz/bin/BasicTerminal.terminal"
+
+# Symfony
+alias symfony="php lib/vendor/symfony/data/bin/symfony"
 
 # Git
 alias clone="git clone"
@@ -173,6 +192,9 @@ alias sglog="hg sglog"
 alias hgc="hg commit"
 alias hgp="hg push"
 alias hgm="hg merge"
+
+# irssi
+alias i="irssi"
 
 ## awesome useless commands
 # watch star wars episode IV in ASCII art
@@ -188,3 +210,12 @@ alias -s pdf="o preview"
 alias -s chm="o iChm"
 alias -s txt="mate"
 alias -s php="mate"
+
+# =======================
+# = Ignored Completions =
+# =======================
+
+alias cake="nocorrect cake"
+alias irssi="nocorrect irssi"
+alias pear="nocorrect pear"
+alias aria="nocorrect aria2c -d /Users/aziz/Downloads/_hazelbox"
