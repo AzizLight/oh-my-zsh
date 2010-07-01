@@ -4,8 +4,15 @@ alias sw="sudo pmset schedule wake"
 
 alias s="source /Users/aziz/.oh-my-zsh/custom/aziz_aliases.zsh; source /Users/aziz/.oh-my-zsh/custom/aziz_functions.zsh;source /Users/aziz/.zshrc"
 
+# make file(s) executable
+alias x="chmod a+x"
+
+# Better looking pwd
+# alias p="echo \"You're in: $fg[cyan]$bg[blue]$PWD$bg[default]$fg[default] \n\""
+alias p="print -P \"You are in: %F{cyan}%K{blue}$PWD%f%k\n\""
+
 # Extract about anything
-alias x="extract"
+# alias x="extract"
 
 # df and du
 alias df="df -h"
@@ -175,10 +182,10 @@ alias vp="php -v && php -d display_errors=on"
 alias phpshell="php /Users/aziz/Sites/pear/php-shell-cmd.php"
 
 # Open a new Terminal.app window with a different color theme
-alias basic="open /Users/aziz/bin/BasicTerminal.terminal"
+# alias basic="open /Users/aziz/bin/BasicTerminal.terminal"
 
 # Symfony
-alias symfony="php lib/vendor/symfony/data/bin/symfony"
+alias sf="php lib/vendor/symfony/data/bin/symfony"
 
 # Git
 alias clone="git clone"
@@ -186,6 +193,12 @@ alias gk="gitk --all &"
 alias status="git status"
 alias gls="git ls-files"
 alias gb="git branch -a --color"
+
+# MacPorts
+alias pse="port search"
+alias pif="port info"
+alias spi="sudo port -c install"
+alias psu="sudo port selfupdate"
 
 # hg
 alias sglog="hg sglog"

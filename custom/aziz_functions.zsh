@@ -1,9 +1,3 @@
-p () {
-	echo -n -e "You're in: $fg[blue]$bg[blue]"
-	pwd
-	echo -n -e "$fg[default]$bg[default]\n"
-}
-
 # show in which dir I am after a cd
 c () {
 	builtin cd "$@" &&
@@ -115,7 +109,7 @@ count () {
 	echo ${#1}
 }
 
-function tm() {
+tm () {
 	mate $1
 	cd $1
 }
@@ -136,7 +130,7 @@ t () {
 }
 
 # Extract about anything
-function extract () {
+extract () {
 	if [ -f $1 ] ; then
 		case $1 in
 			*.tar.bz2)   tar xvjf   $1 ;;
@@ -170,6 +164,24 @@ relaunch () {
 		osascript -e 'quit app "'$app'"';
 		open -a $app
 	done
+}
+
+# Display the Internal and External IPs
+getip () {
+	echo -n "Internal IP: "
+	ifconfig en1 | awk '/inet /&&!/127.0.0.1/{sub(/^[^:]+:/,"",$2); print $2}'
+	echo -n "External IP: "
+	curl icanhazip.com
+}
+
+# List all available zsh colors
+showcolors () {
+	print -l ${(k)fg}
+}
+
+# List & display all 256 colors
+showcolors256 () {
+	for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }
 
 # function that enables things like 'cd .../dir'
