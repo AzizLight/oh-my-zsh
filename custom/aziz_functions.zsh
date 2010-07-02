@@ -1,3 +1,8 @@
+# pwd with style
+p () {
+	print -P "You are in: %F{cyan}%K{blue}$PWD%f%k\n"
+}
+
 # show in which dir I am after a cd
 c () {
 	builtin cd "$@" &&
