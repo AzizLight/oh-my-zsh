@@ -28,7 +28,7 @@ alias history='fc -l 1'
 alias lsa='ls -lah'
 alias l='ls -la'
 alias ll='ls -alr'
-alias sl=ls # often screw this up
+# alias sl=ls # often screw this up
 
 alias sgem='sudo gem'
 
