@@ -2,7 +2,11 @@
 alias ss="sudo pmset schedule sleep"
 alias sw="sudo pmset schedule wake"
 
+# apply changes made to the zsh config
 alias s="source /Users/aziz/.oh-my-zsh/custom/aziz_aliases.zsh; source /Users/aziz/.oh-my-zsh/custom/aziz_functions.zsh;source /Users/aziz/.zshrc"
+
+# refresh all GeekTool Geeklets
+alias geek="osascript -e 'tell application \"geektool\" to refresh all'"
 
 # make file(s) executable
 alias x="chmod a+x"
@@ -15,8 +19,7 @@ alias df="df -h"
 alias du="du -h -c | egrep 'total'"
 
 # which
-alias wi="which"
-alias wia="which -a"
+alias which="builtin which -a"
 
 # top
 alias tu='top -o cpu' # cpu
@@ -60,6 +63,12 @@ alias o="open -a"
 alias o.="o \"Path Finder\" ."
 alias transmit='open -a Transmit'
 
+# Connect to a wireless network
+alias wifi="sudo networksetup -setairportnetwork en1"
+
+# launch quicklook on a file
+alias ql="qlmanage -p 2>/dev/null"
+
 # Textmate
 alias -g ":m"=" | mate"
 alias m="mate"
@@ -67,7 +76,11 @@ alias m.="m ."
 alias "m*"="m {*,.*}"
 alias "m**"="m .*"
 alias mp=":p :m"
-alias mci="m /Users/aziz/Sites/ci/ci" # This is because I check CodeIgniter's source so often
+
+# I disabled MAMP Pro's Dock icon using this method: http://blog-en.mamp.info/2010/02/how-to-hide-mamp-icon-from-your-dock.html
+# Now MAMP Pro doesn't have a dock icon, a menu bar or the little 'x' button to close the main window
+# so here is a little alias to quit MAMP Pro from the command line
+alias mamp-quit="quit 'MAMP PRO'"
 
 # Edit zsh config files with Textmate
 alias ea="m ~/.oh-my-zsh/custom"
@@ -124,6 +137,11 @@ alias mkdir="mkdir -vp"
 
 # cal -m [month]
 alias cal="cal -m"
+
+# convert string to uppercase
+alias -g ":upper"=" | tr \"[:lower:]\" \"[:upper:]\""
+# convert string to lowercase
+alias -g ":lower"=" | tr \"[:upper:]\" \"[:lower:]\""
 
 # ----------------------
 
@@ -206,11 +224,32 @@ alias hgm="hg merge"
 # irssi
 alias i="irssi"
 
+alias jack="jackd -d coreaudio &"
+
+# moc music server
+alias mog="mi-growl.sh &> /dev/null &" # launch growl support
+alias mof="mocp -f" # next
+alias mor="mocp -r" # prev
+alias mop="mocp -G" # play/pause
+alias mos="mocp -s" # stop
+alias mox="mocp -x" # exit
+
 ## awesome useless commands
 # watch star wars episode IV in ASCII art
 alias starwars='telnet towel.blinkenlights.nl'
 
 # ---------
+
+# ------------------------------------------------------------------------
+# Temporary Snippets
+# ------------------------------------------------------------------------
+# 
+# These snippets are related to projects I am currently working on and
+# will be deleted as soon as I don't use them anymore
+
+
+
+# ------------------------------------------------------------------------
 
 # ================== #
 # = Suffix Aliases = #
@@ -229,3 +268,5 @@ alias cake="nocorrect cake"
 alias irssi="nocorrect irssi"
 alias pear="nocorrect pear"
 alias aria="nocorrect aria2c -d /Users/aziz/Downloads/_hazelbox"
+alias repl="nocorrect repl"
+alias cheat="nocorrect cheat"
