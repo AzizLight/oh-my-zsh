@@ -44,9 +44,29 @@ zap () {
 }
 
 # open a manpage in preview
+# pman () {
+# 	man -t "${1}" | open -f -a /Applications/Preview.app
+# }
+
+# This is an alternate pman function that I prefer since
+# Preview.app won't ask to save the file before it quits
 pman () {
-	man -t "${1}" | open -f -a /Applications/Preview.app
+	man -t $* | ps2pdf - - | open -g -f -a /Applications/Preview.app
 }
+
+# open manpage in Textmate
+tman () {
+  MANWIDTH=160 MANPAGER='col -bx' man $@ | mate
+}
+
+# Fewer keystrokes to search man page of command
+mg (){ man ${1} | egrep ${2} | more; }
+
+# A function that allows you to perform a case-insensitive search in
+# the current directory, and directories in the current directory (but no further),
+# for files containing the first argument anywhere in their names.
+# TODO: Customize this function so that the user can easily choose the depth
+quickfind () { find . -maxdepth 4 -iname "*$1*" }
 
 # Create a zip archive
 z () {
@@ -54,7 +74,7 @@ z () {
 }
 
 # Convert a markdown file in an HTML file
-markdown() { 
+markdown () { 
 	/Applications/TextMate.app/Contents/SharedSupport/Support/bin/Markdown.pl $1 > $1.html
 }
 
@@ -68,7 +88,7 @@ lsdict () {
 
 # Create a backup of the file/folder passed as parameter and log the backup in the backup folder
 bak () {
-	date_time=`now`
+	date_time=`date +"%F_%H-%M-%S"`
 	bak_dir=$HOME"/.my.backups/${1}.bak"
 	dir=$bak_dir'/'${date_time}
 	
@@ -114,24 +134,21 @@ count () {
 	echo ${#1}
 }
 
+# Open a directory in Textmate and move into that directory in the terminal
 tm () {
 	mate $1
-	cd $1
+	if [[ -d $1 ]]; then
+		cd $1
+	fi
 }
 
-# Uses the Things command line (things-rb) tool to show all the todo items
-# things-rb: http://github.com/haraldmartin/things-rb
-t () {
-	echo 'Today: \n'
-	command things today
-	echo '\n'
-	
-	echo 'Next: \n'
-	command things next
-	echo '\n'
-	
-	echo 'Someday: \n'
-	command things someday
+# Used for creating scripts.
+# This little function creates the script files and
+# makes them executable before opening them with TextMate
+mx () {
+	touch $*
+	x $*
+	m $*
 }
 
 # Extract about anything
@@ -156,6 +173,11 @@ extract () {
 	fi
 }
 
+# git hub wrapper...
+git () {
+	hub "$@"
+}
+
 # Quit an OS X application from the command line
 quit () {
 	for app in $*; do
@@ -167,6 +189,7 @@ quit () {
 relaunch () {
 	for app in $*; do
 		osascript -e 'quit app "'$app'"';
+		sleep 2;
 		open -a $app
 	done
 }
@@ -187,6 +210,29 @@ showcolors () {
 # List & display all 256 colors
 showcolors256 () {
 	for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
+}
+
+# Fortune Cookie
+fortuneCookie() {
+  # List of cow files available. The are 46 elements in the array.
+  # The is probably a way to make this array dynamic,
+  # but I don't have the patience or the time to find out how
+  # Just in case, run `cowsay -l` and verify that you have all the cowfiles,
+  #  else, replace the contents of the array with you cow files list.
+  cowFiles=('beavis.zen' 'bong' 'bud-frogs' 'bunny' 'cheese' 'cower' 'daemon' 'default' 'dragon' 'dragon-and-cow' 'elephant' 'elephant-in-snake' 'eyes' 'flaming-sheep' 'ghostbusters' ''head-in'' 'hellokitty' 'kiss' 'kitty' 'koala' 'kosh' 'luke-koala' 'meow' 'milk' 'moofasa' 'moose' 'mutilated' 'ren' 'satanic' 'sheep' 'skeleton' 'small' 'sodomized' 'stegosaurus' 'stimpy' 'supermilker' 'surgery' 'telebears' 'three-eyes' 'turkey' 'turtle' 'tux' 'udder' 'vader' 'vader-koala' 'www');
+  
+  # Pick a random cow file
+  cowFileIndex=$[ ( $RANDOM % 46 )  + 1 ]
+  cowFile=${cowFiles[$cowFileIndex]}
+  
+  # Toilet filters
+  toiletFilters=('--gay' '--metal')
+  
+  # Pick a random toilet filter
+  toiletFilterIndex=$[ ( $RANDOM % 2 )  + 1 ]
+  toiletFilter=${toiletFilters[$toiletFilterIndex]}
+  
+  fortune | cowsay -f $cowFile | toilet $toiletFilter -f term
 }
 
 # function that enables things like 'cd .../dir'
