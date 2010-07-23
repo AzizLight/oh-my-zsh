@@ -3,6 +3,11 @@ p () {
 	print -P "You are in: %F{cyan}%K{blue}$PWD%f%k\n"
 }
 
+# Copy the path to a file (including the filename)
+pcf () {
+  echo "$PWD/$1" | pbcopy 
+}
+
 # show in which dir I am after a cd
 c () {
 	builtin cd "$@" &&
