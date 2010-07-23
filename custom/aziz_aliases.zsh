@@ -3,7 +3,7 @@ alias ss="sudo pmset schedule sleep"
 alias sw="sudo pmset schedule wake"
 
 # apply changes made to the zsh config
-alias s="source /Users/aziz/.oh-my-zsh/custom/aziz_aliases.zsh; source /Users/aziz/.oh-my-zsh/custom/aziz_functions.zsh;source /Users/aziz/.zshrc"
+alias s="source /Users/aziz/.zshrc"
 
 # refresh all GeekTool Geeklets
 alias geek="osascript -e 'tell application \"geektool\" to refresh all'"
@@ -20,6 +20,7 @@ alias du="du -h -c | egrep 'total'"
 
 # which
 alias which="builtin which -a"
+alias wh="builtin which"
 
 # top
 alias tu='top -o cpu' # cpu
