@@ -29,39 +29,26 @@ mkcd () {
 	echo "\nMoved to: $fg[blue]$bg[blue]`pwd`$fg[default]$bg[default]\n"
 }
 
+# rm -rf with nice feedback
+rf () {
+	echo "\n\t$fg[red]Permanently removing ${*}...$fg[default]\n" &&
+	command rm -rf $* &&
+	echo "\n\t$fg[yellow]Items deleted: ${*}\n"
+}
+
+# cp -R with nice feedback
+cr () {
+	echo "\n\t$fg[yellow]Copying...\n" &&
+	command cp -R $* &&
+	echo "\n\t$fg[green]Items copied successfully!!$fg[default]\n"
+}
+
 # Download a file with curl
 get () {
 	builtin cd ~/Downloads &&
 	curl -O $1 &&
 	echo "\nDownload Complete : ${1}\n" &&
 	builtin cd $OLDPWD
-}
-
-# Empty the Trash
-empty () {
-	command rm -rf ~/.Trash/* &&
-	echo "\n\t$fg[yellow]Trash emptied successfully$fg[default]\n"
-}
-
-# Uninstall an application using AppZapper
-zap () {
-	open -a AppZapper /Applications/"${1}".app
-}
-
-# open a manpage in preview
-# pman () {
-# 	man -t "${1}" | open -f -a /Applications/Preview.app
-# }
-
-# This is an alternate pman function that I prefer since
-# Preview.app won't ask to save the file before it quits
-pman () {
-	man -t $* | ps2pdf - - | open -g -f -a /Applications/Preview.app
-}
-
-# open manpage in Textmate
-tman () {
-  MANWIDTH=160 MANPAGER='col -bx' man $@ | mate
 }
 
 # Fewer keystrokes to search man page of command
@@ -120,43 +107,13 @@ bak () {
 	echo "\n\t$fg[green]Backup Complete$fg[default]\n"
 }
 
-# rm -rf with nice feedback
-rf () {
-	echo "\n\t$fg[red]Permanently removing ${*}...$fg[default]\n" &&
-	command rm -rf $* &&
-	echo "\n\t$fg[yellow]Items deleted: ${*}\n"
-}
-
-# cp -R with nice feedback
-cr () {
-	echo "\n\t$fg[yellow]Copying...\n" &&
-	command cp -R $* &&
-	echo "\n\t$fg[green]Items copied successfully!!$fg[default]\n"
-}
-
 # return the length of the string passed as argument
 count () {
 	echo ${#1}
 }
 
-# Open a directory in Textmate and move into that directory in the terminal
-tm () {
-	mate $1
-	if [[ -d $1 ]]; then
-		cd $1
-	fi
-}
-
-# Used for creating scripts.
-# This little function creates the script files and
-# makes them executable before opening them with TextMate
-mx () {
-	touch $*
-	x $*
-	m $*
-}
-
 # Extract about anything
+# Note: Only works with one file!
 extract () {
 	if [ -f $1 ] ; then
 		case $1 in
@@ -181,22 +138,6 @@ extract () {
 # git hub wrapper...
 git () {
 	hub "$@"
-}
-
-# Quit an OS X application from the command line
-quit () {
-	for app in $*; do
-		osascript -e 'quit app "'$app'"'
-	done
-}
-
-# Relaunch an OS X application from the command line
-relaunch () {
-	for app in $*; do
-		osascript -e 'quit app "'$app'"';
-		sleep 2;
-		open -a $app
-	done
 }
 
 # Display the Internal and External IPs
@@ -241,6 +182,8 @@ fortuneCookie() {
 }
 
 # function that enables things like 'cd .../dir'
+# ... gets replaced by ../.. automatically
+# then every additional . gets replaced by /..
 rationalise-dot() {
   if [[ $LBUFFER = *.. ]]; then
     LBUFFER+=/..

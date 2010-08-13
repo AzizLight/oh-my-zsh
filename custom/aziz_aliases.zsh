@@ -1,33 +1,51 @@
-# Scheduled sleep and wake (OS X only)
-alias ss="sudo pmset schedule sleep"
-alias sw="sudo pmset schedule wake"
-
 # apply changes made to the zsh config
 alias s="source /Users/aziz/.zshrc"
 
-# refresh all GeekTool Geeklets
-alias geek="osascript -e 'tell application \"geektool\" to refresh all'"
+# rm, cp, mv, mkdir, etc <- regular stuff override
+alias ls="CLICOLOR_FORCE=1 ls -FG"
+alias rm="rm -iv"
+alias mv="mv -iv"
+alias cp="cp -iv"
+alias mkdir="mkdir -vp"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias cal="cal -m"
+alias df="df -h"
+alias du="du -h -c | egrep 'total'"
+alias which="builtin which -a"
+
+# ls
+alias l="ls -l"
+alias la="ls -A"
+alias ll="ls -Al"
+alias lsh="ls -sh"
+alias l.='ls -d .[^.]*'  # list hidden files only
+# alias l.="ls -Ad .*" # alternative to the alias above
+alias ll.='ll -d .[^.]*' # list hidden files only
+alias "l*"="ls *"
+
+# grep
+alias -g "?"="| grep"
+alias -g "e?"="| egrep"
+alias -g "f?"="| fgrep"
+
+# cd
+alias .="p"
+alias -- -="c -"
+
+# dir shortcuts
+alias www="c ~/Sites"
+alias cs="c ~/Sources"
+
+# pwd
+alias pc="builtin pwd|tr -d '\n'|pbcopy" # copy the path to the current folder to the clipboard
 
 # make file(s) executable
 alias x="chmod a+x"
 
-# Extract about anything
-# alias x="extract"
-
-# df and du
-alias df="df -h"
-alias du="du -h -c | egrep 'total'"
-
 # which
-alias which="builtin which -a"
 alias wh="builtin which"
-
-# top
-alias tu='top -o cpu' # cpu
-alias tv='top -o vsize' # memory
-
-# find
-alias f="find . -name"
 
 # Find out if a mysql server is running and show info about it
 alias find-mysql="netstat -ln | grep mysql"
@@ -45,147 +63,14 @@ alias google="ping www.google.com"
 # make tree a little cooler looking.
 alias tree="tree -CAFa -I 'rhel.*.*.package|.git' --dirsfirst"
 
-# ------------
-# - CLI OS X -
-# ------------
-
-# Empty the trash
-alias e="empty"
-
-# Force Quit Firefox
-alias killff="kill firefox-bin"
-
-# pbcopy and pbpaste
-alias -g ":c"=" | pbcopy"
-alias -g ":p"="pbpaste"
-
-# Open Apps from the command line and open files using Apps from the command line (OS X only!)
-alias o="open -a"
-alias o.="o \"Path Finder\" ."
-alias transmit='open -a Transmit'
-
-# Connect to a wireless network
-alias wifi="sudo networksetup -setairportnetwork en1"
-
-# launch quicklook on a file
-alias ql="qlmanage -p 2>/dev/null"
-
-# Textmate
-alias -g ":m"=" | mate"
-alias m="mate"
-alias m.="m ."
-alias "m*"="m {*,.*}"
-alias "m**"="m .*"
-alias mp=":p :m"
-
-# I disabled MAMP Pro's Dock icon using this method: http://blog-en.mamp.info/2010/02/how-to-hide-mamp-icon-from-your-dock.html
-# Now MAMP Pro doesn't have a dock icon, a menu bar or the little 'x' button to close the main window
-# so here is a little alias to quit MAMP Pro from the command line
-alias mamp-quit="quit 'MAMP PRO'"
-
-# Edit zsh config files with Textmate
-alias ea="m ~/.oh-my-zsh/custom"
-alias eb="m ~/.oh-my-zsh ~/.zshrc"
-
-# ------------
-
-# ----------------------
-# - File Manipulation  -
-# -       and          -
-# - Folder Navigation  -
-# ----------------------
-
-# ls
-alias ls="CLICOLOR_FORCE=1 ls -FG"
-alias l="ls -l"
-alias la="ls -A"
-alias ll="ls -Al"
-alias lsh="ls -sh"
-alias l.='ls -d .[^.]*'  # list hidden files only
-alias ll.='ll -d .[^.]*' # list hidden files only
-alias "l*"="ls *"
-# alias dls="echo `ls -l | grep "^d" | awk '{ print $9 }' | tr -d "/"`"  # directory LS # TODO: Fix that alias
-alias cl="clear; p; l"
-
-# grep
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias -g "?"="| grep"
-alias -g "e?"="| egrep"
-alias -g "f?"="| fgrep"
-
-# rm, cp and mv
-alias rm="rm -iv"
-alias mv="mv -iv"
-alias cp="cp -iv"
-
-# cd
-alias .="p"
-alias ..="c .."
-alias ...="c ../.."
-alias ....="c ../../.."
-alias .....="c ../../../.."
-alias cdd="c -"
-alias www="c ~/Sites"
-alias cs="c ~/Sources"
-
-# pwd
-alias pc="builtin pwd|pbcopy"
-
-# mkdir
-alias mkdir="mkdir -vp"
-
-# cal -m [month]
-alias cal="cal -m"
-
 # convert string to uppercase
 alias -g ":upper"=" | tr \"[:lower:]\" \"[:upper:]\""
 # convert string to lowercase
 alias -g ":lower"=" | tr \"[:upper:]\" \"[:lower:]\""
 
-# ----------------------
-
-# ------------------
-# - Ruby and Rails -
-# ------------------
-
-# open the Pickaxe in Preview.app
-alias pickaxe="open /Users/aziz/Documents/eBooks/Ruby\ -\ Rails/Programming\ Ruby\ 1.9/Programming\ Ruby\ 1.9.pdf"
-
-# Colored ri
-alias ri="ri -f ansi -T"
-
-# rvm: ruby 1.9.1
-alias r91="rvm use 1.9.1"
-
-# rvm: system -> ruby 1.8.7
-alias r87="rvm use system"
-
-# rvm: info
-alias rinfo="rvm info"
-
-# rvm: list
-alias rls="rvm list"
-
-# alias rails="rails -d mysql" # Automatically use mysql as the default database server
-alias rss="ruby script/server"
-alias rsg="ruby script/generate"
-alias rsc="ruby script/console"
-
-# gem
-alias gemi="sudo gem install"
-alias gemu="sudo gem update"
-alias gems="gem search --remote"
-
-# ------------------
-
-# ---------
-# - Other -
-# ---------
-
-# autojump
-alias js="jumpstat"
+# -------
+# - PHP -
+# -------
 
 # This is kind of a hack to force MAMP's php to take precedence over OS X's and
 # to force php cli to use the same php.ini config file as the active php
@@ -194,80 +79,18 @@ alias php="/Applications/MAMP/bin/php5.2/bin/php --php-ini /Library/Application\
 # Validate PHP from the Command Line
 alias vp="php -v && php -d display_errors=on"
 
-# PHP Interactive Shell
-alias phpshell="php /Users/aziz/Sites/pear/php-shell-cmd.php"
+# ------------
+# - CLI APPS -
+# ------------
 
-# Open a new Terminal.app window with a different color theme
-# alias basic="open /Users/aziz/bin/BasicTerminal.terminal"
-
-# Symfony
-alias sf="php lib/vendor/symfony/data/bin/symfony"
-
-# Git
-alias clone="git clone"
-alias gk="gitk --all &"
-alias status="git status"
-alias gls="git ls-files"
-alias gb="git branch -a --color"
-
-# MacPorts
-alias pse="port search"
-alias pif="port info"
-alias spi="sudo port -c install"
-alias psu="sudo port selfupdate"
-
-# hg
-alias sglog="hg sglog"
-alias hgc="hg commit"
-alias hgp="hg push"
-alias hgm="hg merge"
+# autojump
+alias js="jumpstat"
 
 # irssi
 alias i="irssi"
 
-alias jack="jackd -d coreaudio &"
+# TTYtter - Twitter CLI client
+alias tt="ttytter"
 
-# moc music server
-alias mog="mi-growl.sh &> /dev/null &" # launch growl support
-alias mof="mocp -f" # next
-alias mor="mocp -r" # prev
-alias mop="mocp -G" # play/pause
-alias mos="mocp -s" # stop
-alias mox="mocp -x" # exit
-
-## awesome useless commands
-# watch star wars episode IV in ASCII art
-alias starwars='telnet towel.blinkenlights.nl'
-
-# ---------
-
-# ------------------------------------------------------------------------
-# Temporary Snippets
-# ------------------------------------------------------------------------
-# 
-# These snippets are related to projects I am currently working on and
-# will be deleted as soon as I don't use them anymore
-
-
-
-# ------------------------------------------------------------------------
-
-# ================== #
-# = Suffix Aliases = #
-# ================== #
-
-alias -s pdf="o preview"
-alias -s chm="o iChm"
-alias -s txt="mate"
-alias -s php="mate"
-
-# =======================
-# = Ignored Completions =
-# =======================
-
-alias cake="nocorrect cake"
-alias irssi="nocorrect irssi"
-alias pear="nocorrect pear"
-alias aria="nocorrect aria2c -d /Users/aziz/Downloads/_hazelbox"
-alias repl="nocorrect repl"
-alias cheat="nocorrect cheat"
+# todo.txt cli
+alias t="todo.sh"

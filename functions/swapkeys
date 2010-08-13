@@ -1,0 +1,35 @@
+# start
+# swapkeys X Y
+#   swap keys X and Y so typing X gives Y and vice versa
+# swapkeys -d X Y
+#   completely remove a previous swapping
+
+emulate -L zsh
+setopt cbases
+
+integer delete i
+local key hexkey
+
+if [[ $1 = -d ]]; then
+  delete=1
+  shift
+fi
+
+if [[ $# -ne 2 || ${#1} -ne 1 || ${#2} -ne 1 ]]; then
+  print "Usage: $0 [-d] key1 key2" >&2
+  return 1
+fi
+
+for (( i = 1; i <= 2; i++ )); do
+  key=$argv[i]
+  hexkey=$(( [#16] #key ))
+  if (( delete )); then
+    zle -D insert-key-$hexkey
+    bindkey $key self-insert
+  else
+    eval "insert-key-$hexkey () { LBUFFER+=\$'\\x${hexkey##0x}'; }"
+    zle -N insert-key-$hexkey
+    bindkey ${argv[3-i]} insert-key-$hexkey
+  fi
+done
+# end
