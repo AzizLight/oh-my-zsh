@@ -1,0 +1,5 @@
+alias irssi="nocorrect irssi"
+alias pear="nocorrect pear"
+alias aria="nocorrect aria2c -d /Users/aziz/Downloads/_hazelbox"
+alias repl="nocorrect repl"
+alias cheat="nocorrect cheat"
