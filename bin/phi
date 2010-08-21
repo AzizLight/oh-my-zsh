@@ -1,0 +1,66 @@
+#!/usr/bin/php
+<?php
+
+//       v   v
+//       \\O//
+     $RED  =  31;
+  $GREEN   =   32;
+  $BLUE    =    34;
+$MAGENTA   =   35;
+    $CYAN  =  36;
+//      _// \\_
+//     '~~   ~~`
+
+//colours pattern with ansi
+function preg_color($pattern, $color, $text) { return
+  preg_replace($pattern, chr(27)."[{$color}m\\1".chr(27).'[0m', $text)
+;}
+
+//print usage help if no function name was passed.
+if (empty($argv[1]))
+    die(chr(27) . "[31mUsage:" . chr(27) . "[0m phi function-name\n"
+      . chr(27) . "[31mExample:" . chr(27) . "[0m phi preg_match\n");
+
+if ( !!! preg_match('@<div class="methodsynopsis dc-description">(.+?)</div>@s',
+                    file_get_contents("http://php.net/$argv[1]"),
+                    $matches)
+   )
+   die( "`$argv[1]'? Never heard of him in my life.\n" );
+
+echo                                                 //print it
+ preg_color('/^([a-zA-Z0-9_]+)/', $GREEN,           //hilite identifiers
+  preg_color('/(\$[a-zA-Z0-9_]+)/', $BLUE,         //hilite arguments
+   preg_color('/( [A-Z_][A-Z_0-9]* )/', $RED,     //hilite constants
+    preg_color('/( true | false )/', $RED,       //hilite booleans
+     preg_color('/( [0-9]+ )/', $CYAN,          //hilite integers
+      preg_color('/([=(),&\[\]]+)/', $MAGENTA, //hilite punctuation
+       preg_replace('/[a-z]+ (\$|&)/', '\\1', //remove types
+        preg_replace('/^[a-z]+ /', '',       //remove function type
+         str_replace(' )', ')',             //remove whitespace       
+          str_replace(' , ', ', ',         //remove whitespace
+           str_replace(' ( ', '(',        //remove whitespace
+            trim(                        //remove whitespace
+             preg_replace('/ +/', ' ',  //remove extra whitespace      ,
+              str_replace("\n", '',    //remove newlines              /_\
+               html_entity_decode(    //decode html entities           |  work
+                strip_tags(          //remove tags                     |  your
+                 $matches[1]        //get synopsis html            ____| way up
+                )//this php
+               )//script helps
+              )//you remember
+             )//what order
+            )//arguments come
+           )//in for any
+          )//php function.
+         )//example usage:
+        )//
+       )//  $ ./phi.php str_replace
+      )//  str_replace($search, $replace, $subject [, &count ])
+     )//
+    )//it's better
+   )//than php.net
+  )//because its
+ )//output is
+ //colourful and
+//concise. (~and fast!)
+. "\n"; // And clean!

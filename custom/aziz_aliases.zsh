@@ -13,7 +13,6 @@ alias fgrep="fgrep --color=auto"
 alias cal="cal -m"
 alias df="df -h"
 alias du="du -h -c | egrep 'total'"
-alias which="builtin which -a"
 
 # ls
 alias l="ls -l"
@@ -33,6 +32,10 @@ alias -g "f?"="| fgrep"
 # cd
 alias .="p"
 alias -- -="c -"
+
+# which
+alias wi="which"
+alias wia="which -a"
 
 # dir shortcuts
 alias www="c ~/Sites"
@@ -55,6 +58,12 @@ alias h="history"
 
 # less
 alias -g ":l"=" | less -R"
+
+# most
+alias -g ":m"="most"
+
+# Copy ssh key to the clipboard
+alias ss="cat ~/.ssh/id_rsa.pub|pbcopy"
 
 # Ping
 alias ping="ping -c 5"
@@ -86,7 +95,7 @@ alias vp="php -v && php -d display_errors=on"
 # autojump
 alias js="jumpstat"
 
-# irssi
+# irssii
 alias i="irssi"
 
 # TTYtter - Twitter CLI client

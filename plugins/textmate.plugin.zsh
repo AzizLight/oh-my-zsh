@@ -1,8 +1,7 @@
 # Textmate
-alias -g ":m"=" | mate"
 alias m="mate"
 alias m.="m ."
-alias mp="pbpaste :m"
+alias mp="pbpaste | m"
 
 # Open a directory in Textmate and move into that directory in the terminal
 tm () {

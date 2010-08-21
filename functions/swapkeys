@@ -1,3 +1,4 @@
+# Taken from http://www.zsh.org/mla/users/2006/msg00141.html
 # start
 # swapkeys X Y
 #   swap keys X and Y so typing X gives Y and vice versa

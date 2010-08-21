@@ -1,0 +1,80 @@
+#!/usr/bin/env php
+<?php
+
+/* 
+|-------------------------------------------------------------------------------
+| Jekyll Post Generator
+|-------------------------------------------------------------------------------
+| -Settings---------------------------------------------------------------------
+| Set your timezone unless you like warnings.
+| Here is a list of all supported timezones:
+|  http://php.net/manual/en/timezones.php                                    */
+date_default_timezone_set( 'Europe/Paris' );
+
+# Change that to .textile or .html if you don't like markdown.
+$extension = '.markdown';
+
+# Deafult layout
+$layout = 'default';
+
+# Set this variable to true if you want to create post files as drafts.
+$draft = true;
+
+# Text/Blog Editor command
+# NOTE: If you want to use an editor that doesn't have a command-line tool
+#        use the following command (OS X only):
+#            open -a "{Application name}"
+#        and replace {Application name} with the actual application's name.
+#        Example:
+#            open -a "MarsEdit"
+$editor = 'mate';
+// ----------------------------------------------------------------------------
+
+if ( ! is_dir( '_posts' ) && trim( basename( getcwd() ) ) != '_posts' )
+	exit( "The '_posts' folder was not found...\n" );
+
+if ( count( $argv ) < 2 )
+{
+	fwrite( STDOUT, "Please provide a post title.\n" );
+	$title = trim( fgets( STDIN ) );
+	
+	if ( empty( $title ) )
+		exit( 'You need to specify a post title!!' );
+}
+else
+	$title = trim( join( ' ', array_slice( $argv, 1 ) ) );
+
+$slug      = preg_replace( '/[ _\.-]+/', '-', strtolower( trim( $title, " \t\n\r\0\x0B-_." ) ) );
+$prefix    = date( 'Y-m-d' );
+$file      = $prefix . '-' . $slug . $extension;
+$path      = ( basename( getcwd() ) == '_posts' ) ? './' : './_posts/';
+$full_path = $path . $file;
+$editor    = trim( $editor );
+$layout    = trim( $layout );
+$draft     = ( isset( $draft ) && $draft === true ) ? "published: false\n": '';
+
+$text      = "---\n";
+$text     .= "title: {$title}\n";
+$text     .= "layout: {$layout}\n";
+$text     .= $draft;
+$text     .= "---\n\n";
+
+if ( is_readable( $full_path ) )
+{
+	exec( trim( $editor ) . ' ' . $full_path );
+	exit;
+}
+
+if ( ! $handle = @fopen( $full_path, 'w+b' ) )
+	exit( 'Unable to create the post file...' );
+
+echo "\nCreating post file...\n";
+
+flock($handle, LOCK_EX);
+fwrite($handle, $text);
+flock($handle, LOCK_UN);
+fclose($handle);
+
+echo "Post file created successfully !\n";
+
+exec( $editor . ' ' . $full_path );

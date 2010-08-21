@@ -14,6 +14,7 @@ alias gcp='git cherry-pick'
 alias clone="git clone"
 alias gls="git ls-files"
 alias gb="git branch -a --color"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
 #
 # Will return the current branch name

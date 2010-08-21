@@ -107,6 +107,20 @@ bak () {
 	echo "\n\t$fg[green]Backup Complete$fg[default]\n"
 }
 
+# Less radical alternative to the function above
+# Taken from: http://github.com/rtomayko/dotfiles/blob/rtomayko/bin/orig
+orig ()
+{
+    if [ $# = 0 ] ; then
+        echo "usage: orig FILE ..."
+        echo "copy FILE(s) to FILE.orig"
+    else
+        for f in "$@" ; do
+            cp -p "$f" "$f.orig"
+        done
+    fi
+}
+
 # return the length of the string passed as argument
 count () {
 	echo ${#1}
@@ -180,6 +194,11 @@ fortuneCookie() {
   
   fortune | cowsay -f $cowFile | toilet $toiletFilter -f term
 }
+
+# Usage: pls [<var>]
+# List path entries of PATH or environment variable <var>.
+# Taken from http://github.com/rtomayko/dotfiles/blob/rtomayko/.bashrc
+lspath () { eval echo \$${1:-PATH} |tr : '\n'; }
 
 # function that enables things like 'cd .../dir'
 # ... gets replaced by ../.. automatically
