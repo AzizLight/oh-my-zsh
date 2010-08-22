@@ -5,16 +5,17 @@ swapkeys \` \~
 # I never use numbers in the terminal
 # but I ofter use symbols
 # Let's swap them
-swapkeys \! 1
-swapkeys \@ 2
-swapkeys \# 3
-swapkeys \$ 4
-swapkeys \% 5
-swapkeys \^ 6
-swapkeys \& 7
-swapkeys \* 8
-swapkeys \( 9
-swapkeys \) 0
+# TODO: put that in a function.
+# swapkeys \! 1
+# swapkeys \@ 2
+# swapkeys \# 3
+# swapkeys \$ 4
+# swapkeys \% 5
+# swapkeys \^ 6
+# swapkeys \& 7
+# swapkeys \* 8
+# swapkeys \( 9
+# swapkeys \) 0
 
 # Fix the delete key
 bindkey    "^[[3~"          delete-char

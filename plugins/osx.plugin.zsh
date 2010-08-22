@@ -35,7 +35,7 @@ alias bs="b search"
 alias "b?"="b info"
 
 # Edit zsh config files with Textmate
-alias mz='m $ZSH ~/.zshrc'
+alias mz='m $ZSH'
 alias cz='c $ZSH'
 
 # -------------
