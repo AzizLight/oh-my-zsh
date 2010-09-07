@@ -149,11 +149,6 @@ extract () {
 	fi
 }
 
-# git hub wrapper...
-git () {
-	hub "$@"
-}
-
 # Display the Internal and External IPs
 getip () {
 	echo -n "Internal IP: "

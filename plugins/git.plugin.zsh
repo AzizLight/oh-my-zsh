@@ -4,7 +4,7 @@ alias gst='git status'
 alias gl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
-alias gd='git diff | mate'
+alias gd='git diff -w "$@" | mate'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
@@ -15,6 +15,13 @@ alias clone="git clone"
 alias gls="git ls-files"
 alias gb="git branch -a --color"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+# git hub wrapper...
+git () {
+	hub "$@"
+}
+
+
 
 #
 # Will return the current branch name
