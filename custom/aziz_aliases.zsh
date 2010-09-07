@@ -40,6 +40,7 @@ alias wia="which -a"
 # dir shortcuts
 alias www="c ~/Sites"
 alias cs="c ~/Sources"
+alias csgit="c ~/Sources/git"
 
 # pwd
 alias pc="builtin pwd|tr -d '\n'|pbcopy" # copy the path to the current folder to the clipboard
@@ -60,7 +61,7 @@ alias h="history"
 alias -g ":l"=" | less -R"
 
 # most
-alias -g ":m"="most"
+alias -g ":m"="|most"
 
 # Copy ssh key to the clipboard
 alias ss="cat ~/.ssh/id_rsa.pub|pbcopy"
@@ -103,3 +104,7 @@ alias tt="ttytter"
 
 # todo.txt cli
 alias t="todo.sh"
+
+# jekyll
+alias jk="jekyll"
+alias jks="jekyll --server"
