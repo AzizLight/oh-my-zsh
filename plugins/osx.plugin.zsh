@@ -13,7 +13,7 @@ alias transmit='open -a Transmit'
 
 # Lock screen
 # Taken from here: http://github.com/rtomayko/dotfiles/blob/rtomayko/bin/lock-screen
-alias lock="/System/Library/CoreServices/"Menu Extras"/User.menu/Contents/Resources/CGSession -suspend"
+alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # I disabled MAMP Pro's Dock icon using this method: http://blog-en.mamp.info/2010/02/how-to-hide-mamp-icon-from-your-dock.html
 # Now MAMP Pro doesn't have a dock icon, a menu bar or the little 'x' button to close the main window
