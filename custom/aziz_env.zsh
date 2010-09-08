@@ -1,5 +1,6 @@
 # ~/bin
 path=( /Users/aziz/bin $path )
+path=( /Users/aziz/Dropbox/bin $path ) # The new bin dir is synched with dropbox.
 
 # .oh-my-zsh/bin
 path=( $ZSH/bin $path )
