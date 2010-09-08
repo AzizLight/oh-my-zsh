@@ -15,11 +15,11 @@ alias df="df -h"
 alias du="du -h -c | egrep 'total'"
 
 # ls
-alias l="ls -l"
-alias la="ls -A"
-alias ll="ls -Al"
-alias lsh="ls -sh"
-alias l.='ls -d .[^.]*'  # list hidden files only
+alias l="ls -1"
+alias la="ls -1A"
+alias ll="ls -l"
+alias ls.='ls -d .[^.]*'  # list hidden files only
+alias l.='ls -1 -d .[^.]*'  # list hidden files only
 # alias l.="ls -Ad .*" # alternative to the alias above
 alias ll.='ll -d .[^.]*' # list hidden files only
 alias "l*"="ls *"
