@@ -108,3 +108,8 @@ alias t="todo.sh"
 # jekyll
 alias jk="jekyll"
 alias jks="jekyll --server"
+
+# Vim
+alias v="mvim"
+alias vv="v ~/.vimrc"
+alias cv="c ~/.vim/"
