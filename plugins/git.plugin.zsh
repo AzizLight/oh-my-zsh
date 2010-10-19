@@ -16,12 +16,11 @@ alias gls="git ls-files"
 alias gb="git branch -a --color"
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 
-# git hub wrapper...
-git () {
-	hub "$@"
-}
-
-
+# # git hub wrapper...
+# # Only uncomment if you have the hub gem installed
+# git () {
+# 	hub "$@"
+# }
 
 #
 # Will return the current branch name
