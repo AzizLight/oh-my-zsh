@@ -11,8 +11,6 @@ parse_git_dirty () {
     echo "$ZSH_THEME_GIT_PROMPT_CLEAN"
   fi
 }
-<<<<<<< HEAD
-=======
 
 # get the status of the working tree
 git_prompt_status() {
@@ -40,4 +38,3 @@ git_prompt_status() {
   fi
   echo $STATUS
 }
->>>>>>> remotes/super/master
