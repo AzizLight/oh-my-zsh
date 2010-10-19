@@ -19,6 +19,7 @@ path=( $path /Users/aziz/Sites/yii/framework )
 export EDITOR='mate'
 export VISUAL='mate -w'
 export PAGER='most'
+export GIT_EDITOR="mate -wl1"
 
 # Note: if `export CDPATH=.:~` is used instead
 # autocompletion will not work for dirs that
