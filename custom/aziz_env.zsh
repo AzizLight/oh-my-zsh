@@ -10,9 +10,6 @@ path=( /Applications/MAMP/bin/php5.2/bin $path )
 path=( /Applications/MAMP/Library/bin $path )
 path=( /Applications/MAMP/bin/php5/bin $path )
 
-# MultiMarkdown
-path=( $path "/Users/aziz/Library/Application Support/MultiMarkdown/bin" )
-
 # Homebrew
 path=( /Users/aziz/.homebrew/bin $path )
 
