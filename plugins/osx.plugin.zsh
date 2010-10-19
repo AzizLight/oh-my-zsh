@@ -8,7 +8,7 @@ alias -g ":p"="pbpaste"
 
 # Open Apps from the command line and open files using Apps from the command line (OS X only!)
 alias o="open -a"
-alias o.="o \"Path Finder\" ."
+alias o.="o \"Finder\" ."
 alias transmit='open -a Transmit'
 
 # Lock screen
@@ -33,6 +33,15 @@ alias -g b="brew"
 alias bi="b install"
 alias bs="b search"
 alias "b?"="b info"
+
+# Growl - Start and Stop
+# TODO: Create a "toggle-growl" function
+alias start-growl="osascript -e 'tell application \"GrowlHelperApp\" to activate'"
+alias stop-growl="osascript -e 'tell application \"GrowlHelperApp\" to quit'"
+alias check-growl="osascript -e 'tell application \"System Events\"
+  set isRunning to ¬
+    count of (every process whose name is \"GrowlHelperApp\") > 0
+end tell'"
 
 # Edit zsh config files with Textmate
 alias mz='m $ZSH'
