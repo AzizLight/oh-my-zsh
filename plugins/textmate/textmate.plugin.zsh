@@ -1,14 +1,26 @@
+# Textmate
+alias m="mate"
+alias m.="m ."
+alias mp="pbpaste | m"
 
-# TextMate
-alias et='mate . &'
-alias ett='mate app config lib db public spec test Rakefile Capfile Todo &'
-alias etp='mate app config lib db public spec test vendor/plugins vendor/gems Rakefile Capfile Todo &'
-alias etts='mate app config lib db public script spec test vendor/plugins vendor/gems Rakefile Capfile Todo &'
+# Open a directory in Textmate and move into that directory in the terminal
+tm () {
+	mate $1
+	if [[ -d $1 ]]; then
+		cd $1
+	fi
+}
 
-# Editor Ruby file in TextMate
-alias mr='mate CHANGELOG app config db lib public script spec test'
+# Used for creating scripts.
+# This little function creates the script files and
+# makes them executable before opening them with TextMate
+mx () {
+	touch $*
+	x $*
+	m $*
+}
 
-function tm() {
-  cd $1
-  mate $1
+# open manpage in Textmate
+tman () {
+  MANWIDTH=160 MANPAGER='col -bx' man $@ | mate
 }
