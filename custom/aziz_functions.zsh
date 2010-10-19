@@ -5,7 +5,7 @@ p () {
 
 # Copy the path to a file (including the filename)
 pcf () {
-  echo "$PWD/$1" | pbcopy 
+  echo "$PWD/$1" |tr -d '\n'| pbcopy 
 }
 
 # show in which dir I am after a cd
@@ -26,7 +26,7 @@ mkcd () {
 	command mkdir -p $1 &&
 	echo "\n\tFolders created: $fg[green]${1}$fg[default]" &&
 	builtin cd $1 &&
-	echo "\nMoved to: $fg[blue]$bg[blue]`pwd`$fg[default]$bg[default]\n"
+	echo "\nMoved to: $fg[cyan]$bg[blue]`pwd`$fg[default]$bg[default]\n"
 }
 
 # rm -rf with nice feedback
@@ -57,7 +57,6 @@ mg (){ man ${1} | egrep ${2} | more; }
 # A function that allows you to perform a case-insensitive search in
 # the current directory, and directories in the current directory (but no further),
 # for files containing the first argument anywhere in their names.
-# TODO: Customize this function so that the user can easily choose the depth
 quickfind () { find . -maxdepth 4 -iname "*$1*" }
 
 # Create a zip archive
@@ -119,6 +118,12 @@ orig ()
             cp -p "$f" "$f.orig"
         done
     fi
+}
+
+# check if a domain name is registered
+# Taken from here: http://jasonseifer.com/2010/05/05/osx-post-install-guide-4#dev
+function isreg {
+  whois $1 | grep -q 'No match' && echo "No" || echo "Yes"
 }
 
 # return the length of the string passed as argument
