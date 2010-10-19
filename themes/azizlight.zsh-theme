@@ -10,6 +10,8 @@ local pchar="%(?,%{$fg[white]%}$(prompt_char)%{$reset_color%},%{$fg[red]%}$(prom
 RPROMPT=''
 PROMPT='%{$fg_bold[red]%}➜  %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_info)
 $pchar '
+SUDO_PROMPT="$fg_bold[red]Sudo Password:$fg[default]"
+
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}»%{$reset_color%} %{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
