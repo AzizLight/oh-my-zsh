@@ -1,5 +1,5 @@
 # apply changes made to the zsh config
-alias s="source /Users/aziz/.zshrc"
+alias s="source ~/.zshrc && echo \"$fg[green]Sourced ~/.zshrc$fg[default]\""
 
 # rm, cp, mv, mkdir, etc <- regular stuff override
 alias ls="CLICOLOR_FORCE=1 ls -FG"
