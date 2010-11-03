@@ -1,0 +1,109 @@
+#!/usr/bin/env ruby
+
+# This Script is a wrapper for the mate command.
+# IT'S NOT A SUBSTITUTE! 
+# If you want to pipe to Textmate from the terminal,
+# use the mate command instead.
+# Also, its slower than the mate command, so if you don't
+# mind typing a couple extra characters, but do mind one extra
+# second of waiting at most, then use the mate command.
+
+# Make sure that the mate command is installed!
+system("which mate > /dev/null 2>/dev/null")
+unless $?.exitstatus == 0
+  puts "The mate command was not found!"
+  exit
+end
+
+HOME = `echo $HOME`.chomp
+CWD  = Dir.pwd
+
+# Notes about this array:
+#   Add a trailling slash only if you don't want the dir itself to be included
+#   Example: 
+#     authorized_dirs = [ "#{HOME}/Sites/", "#{HOME}/Sandbox/", "#{HOME}/Sources/", "#{HOME}/bin" ]
+#     
+#     Here only the bin dir is included. The Sites, Sandbox and Sources dirs are not included,
+#     but everything below them are.
+#     
+#     That means that if you use the m command with no argument under the Sources dir, it will open a new file in Textmate
+#     but if you use the m command with no argument under the Sources/ruby dir or the bin dir, it will open the dir itself.
+AUTHORIZED_DIRS = [ "#{HOME}/Sites/", "#{HOME}/Sandbox/", "#{HOME}/Sources/", "#{HOME}/bin", "#{HOME}/.oh-my-zsh" ]
+VALID_OPTIONS   = ["a","-async","w","-wait","l","-line","r","-recent","d","-change-dir","n","-no-reactivation","h","-help","v","-version"]
+
+
+def validate_dir(dir)
+  
+  AUTHORIZED_DIRS.each do |d|
+    return dir != d.chop if dir.include?(d)
+  end
+  false
+end
+
+def validate_arg(arg)
+  if arg[0] == "-"
+    if VALID_OPTIONS.include? arg[1..-1]
+      return true
+    end
+    
+    invalid_options = []
+    arg[1..-1].split(//).each do |char|
+      if !VALID_OPTIONS.include? char
+        invalid_options << char
+      end
+    end
+    
+    return true if invalid_options.empty?
+    
+    if !File.exist? arg
+      options_label = invalid_options.size > 1 ? "options" : "option"
+      puts invalid_options.size.to_s + " unknown #{options_label}:"
+      invalid_options.map { |option| puts "\t-" + option }
+      exit
+    end
+  end
+end
+
+if ARGV.empty?
+  if validate_dir(CWD)
+    exec 'mate .'
+  else
+    exec 'mate'
+  end
+else
+  # Remove the - argument(s) if it's not the only one passed. Otherwize use it.
+  # The - argument can be use to read from stdin
+  if ARGV.include? "-"
+    ARGV.size > 1 ? ARGV.delete("-") : exec("mate -")
+  end
+  
+  # The -h and -v options have the highest precedence
+  includes_h = ARGV.include? "h"
+  includes_v = ARGV.include? "v"
+  if includes_h && includes_v
+    ARGV.index("h") > ARGV.index("v") ? exec("mate -v") : exec("mate -h")
+  elsif includes_h
+    exec("mate -h")
+  elsif includes_v
+    exec("mate -v")
+  end
+  
+  options = []
+  files = []
+  ARGV.each do |arg|
+    if validate_arg arg
+      options << arg
+    else
+      files << arg
+    end
+  end
+  if files.empty?
+    if validate_dir(CWD)
+      exec "mate #{options.join(" ")} ."
+    else
+      exec "mate #{options.join(" ")}"
+    end
+  else
+    exec "mate #{options.join(" ")} #{files.join(" ")}"
+  end
+end
