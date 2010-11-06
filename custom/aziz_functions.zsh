@@ -172,7 +172,7 @@ fortuneCookie() {
   fortune | cowsay -f $cowFile | toilet $toiletFilter -f term
 }
 
-# Usage: pls [<var>]
+# Usage: lspath [<var>]
 # List path entries of PATH or environment variable <var>.
 # Taken from http://github.com/rtomayko/dotfiles/blob/rtomayko/.bashrc
 lspath () { eval echo \$${1:-PATH} |tr : '\n'; }
