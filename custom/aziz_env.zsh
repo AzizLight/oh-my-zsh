@@ -24,4 +24,4 @@ export GIT_EDITOR="mate -wl1"
 # Note: if `export CDPATH=.:~` is used instead
 # autocompletion will not work for dirs that
 # are not in the current dir.
-cdpath=( ~ $cdpath )
+cdpath=( $cdpath ~ )
