@@ -3,6 +3,7 @@ fpath=($ZSH/plugins/rvm $fpath)
 autoload -U compinit
 compinit -i
 
+alias rvmi="rvm info"
 alias rl="rvm list"
 alias r192="rvm use 1.9.2"
 alias r191="rvm use 1.9.1"
