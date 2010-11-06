@@ -35,7 +35,9 @@ VALID_OPTIONS   = ["a","-async","w","-wait","l","-line","r","-recent","d","-chan
 def validate_dir(dir)
   
   AUTHORIZED_DIRS.each do |d|
-    return dir != d.chop if dir.include?(d)
+    # NOTE: the downcase method is used to make the comparision case incensitive
+    # There is probably a better way to do this
+    return dir.downcase != d.downcase.chop if dir.downcase.include?(d.downcase)
   end
   false
 end

@@ -1,16 +1,28 @@
 path=($ZSH/plugins/textmate/bin $path)
 
-# Textmate
-# alias m="mate"
+# Aliases
 alias m.="mate ."
 alias mp="pbpaste | mate"
 
 # Open a directory in Textmate and move into that directory in the terminal
-tm () {
+mc () {
+	echo "Opening $fg[cyan]${1}$fg[default] in $fg[blue]Textmate$fg[default]..." &&
 	mate $1
 	if [[ -d $1 ]]; then
-		cd $1
+		builtin cd $1
+		echo "\nMoved to: $fg[cyan]$bg[blue]`pwd`$fg[default]$bg[default]"
 	fi
+}
+
+# Create the directory (structure), move to the (deepest) created dir,
+# and open it in Textmate
+mktm () {
+	command mkdir -p $1 &&
+	echo "\n\tFolders created: $fg[green]${1}$fg[default]" &&
+	builtin cd $1 &&
+	echo "\nMoved to: $fg[cyan]$bg[blue]`pwd`$fg[default]$bg[default]" &&
+	echo "Opening directory in $fg[blue]Textmate$fg[default]..." &&
+	mate .
 }
 
 # Used for creating scripts.
