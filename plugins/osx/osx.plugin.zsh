@@ -43,10 +43,6 @@ alias check-growl="osascript -e 'tell application \"System Events\"
     count of (every process whose name is \"GrowlHelperApp\") > 0
 end tell'"
 
-# Edit zsh config files with Textmate
-alias mz='m $ZSH'
-alias cz='c $ZSH'
-
 # -------------
 # - Functions -
 # -------------

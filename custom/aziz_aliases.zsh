@@ -1,6 +1,12 @@
 # apply changes made to the zsh config
 alias s="source ~/.zshrc && echo \"$fg[green]Sourced ~/.zshrc$fg[default]\""
 
+# Edit zsh/oh-my-zsh config files in the default editor
+alias mz='$EDITOR $ZSH'
+alias mrc='$EDITOR $HOME/.zshrc'
+alias mzrc='$EDITOR $HOME/.zshrc && $EDITOR $ZSH'
+alias cz='c $ZSH'
+
 # rm, cp, mv, mkdir, etc <- regular stuff override
 alias ls="CLICOLOR_FORCE=1 ls -FG"
 alias rm="rm -iv"
