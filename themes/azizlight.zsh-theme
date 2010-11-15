@@ -5,11 +5,10 @@ function prompt_char {
 }
 
 # If the previous command failed, the prompt character will be red
-local pchar="%(?,%{$fg[white]%}$(prompt_char)%{$reset_color%},%{$fg[red]%}$(prompt_char)%{$reset_color%})"
 
 RPROMPT=''
 PROMPT='%{$fg_bold[red]%}➜  %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_info)
-$pchar '
+%(?,%{$fg[white]%}$(prompt_char)%{$reset_color%},%{$fg[red]%}$(prompt_char)%{$reset_color%}) '
 SUDO_PROMPT="$fg_bold[red]Sudo Password:$fg[default]"
 
 
