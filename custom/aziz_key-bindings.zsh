@@ -2,6 +2,12 @@
 autoload -U swapkeys
 swapkeys \` \~
 
+# Enable the C-x C-e shortcut to open the VISUAL editor
+#  Doesn't work ...
+# autoload edit-command-line
+# zle -N edit-command-line
+# bindkey '^x^e' edit-command-line
+
 # I never use numbers in the terminal
 # but I ofter use symbols
 # Let's swap them

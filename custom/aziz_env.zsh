@@ -17,6 +17,7 @@ path=( /Users/aziz/.homebrew/bin $path )
 path=( $path /Users/aziz/Sites/yii/framework )
 
 export EDITOR='mate'
+export FCEDIT='mate -w'
 export VISUAL='mate -w'
 export PAGER='most'
 export GIT_EDITOR="mate -wl1"
