@@ -102,20 +102,9 @@ alias vp="php -v && php -d display_errors=on"
 # autojump
 alias js="jumpstat"
 
-# irssii
-alias i="irssi"
-
-# TTYtter - Twitter CLI client
-alias tt="ttytter"
-
-# todo.txt cli
-alias t="todo.sh"
-
 # jekyll
 alias jk="jekyll"
 alias jks="jekyll --server"
 
-# Vim
-alias v="mvim"
-alias vv="v ~/.vimrc"
-alias cv="c ~/.vim/"
+# Get ip address
+alias ip="curl ifconfig.me"
