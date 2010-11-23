@@ -59,6 +59,41 @@ function tab() {
 EOF
 }
 
+
+# ------------------------------------------------------------------------------
+# The three functions below were taken from this gist:
+# https://gist.github.com/710805
+
+# Print Finder Directory
+function fp() {
+  osascript 2>/dev/null <<EOF 
+    tell application "Finder"
+      return POSIX path of (target of window 1 as alias)
+    end tell
+EOF
+}
+
+# Print Finder Selection
+function fs() {
+  osascript 2>/dev/null <<EOF 
+    set output to ""
+    tell application "Finder" to set the_selection to selection
+      set item_count to count the_selection
+      repeat with item_index from 1 to count the_selection
+        if item_index is less than item_count then set the_delimiter to "\n"
+        if item_index is item_count then set the_delimiter to ""
+        set output to output & ((item item_index of the_selection as alias)'s POSIX path) & the_delimiter 
+      end repeat
+EOF
+}
+
+# Change to the current finder directory
+function cf() {
+  cd "$(pfd)"
+}
+# ------------------------------------------------------------------------------
+
+
 # Quit an OS X application from the command line
 quit () {
     for app in $*; do
