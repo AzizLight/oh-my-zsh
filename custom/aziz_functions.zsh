@@ -149,6 +149,20 @@ showcolors256 () {
 	for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
 }
 
+# search for various types or README file in dir and display them in $PAGER
+# Taken from there:
+# https://github.com/Valodim/oh-my-zsh/blob/2c65742d5f1b9679b0bd57863bad1690ecfef337/custom/misc.zsh
+readme ()
+{
+    local files
+    files=(./(#i)*(read*me|lue*m(in|)ut)*(ND))
+    if (($#files))
+    then $PAGER $files
+    else
+    print 'No README files.'
+    fi
+}
+
 # Fortune Cookie
 fortuneCookie() {
   # List of cow files available. The are 46 elements in the array.
