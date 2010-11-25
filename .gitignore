@@ -5,3 +5,4 @@ custom/autojump.zsh
 !custom/example.zsh
 NOTES.markdown
 *.zsh.scratch
+themes/test.zsh-theme
