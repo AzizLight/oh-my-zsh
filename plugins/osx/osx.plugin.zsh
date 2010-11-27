@@ -47,6 +47,12 @@ end tell'"
 # - Functions -
 # -------------
 
+# cd to the directory in the frontmost TextMate window
+# optionally, open the directory in FInder/Path Finder
+# taken from the zsh-templates-osx project:
+# http://code.google.com/p/zsh-templates-osx/
+autoload -U cdt
+
 function tab() {
   osascript 2>/dev/null <<EOF
     tell application "System Events"
@@ -58,7 +64,6 @@ function tab() {
     end tell
 EOF
 }
-
 
 # ------------------------------------------------------------------------------
 # The three functions below were taken from this gist:
@@ -92,7 +97,6 @@ function cf() {
   cd "$(pfd)"
 }
 # ------------------------------------------------------------------------------
-
 
 # Quit an OS X application from the command line
 quit () {

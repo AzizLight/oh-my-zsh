@@ -1,0 +1,53 @@
+#!/bin/zsh -f
+
+# cdt:
+
+# change the current working directory to that corresponding to the file displayed in Textmate's frontmost window
+# change this and the Finder (-F)
+# change the finder only (-f)
+# Note: If you are using Finder instead of Path Finder, change "Path Finder" to "Finder" on lines 28 and 30
+
+DocPath="$(osascript -e 'tell app "TextMate" to return path of first document')"
+DocDir="$(dirname "$DocPath")"
+
+print "The frontmost TextMate file is $DocPath"
+
+function fdc {
+if [ -n "$1" ]; then
+	if [ "${1%%/*}" = "" ]; then
+		thePath="$1"
+	else
+		thePath="$(pwd)""/$1"
+	fi
+else
+	thePath="$(pwd)"
+fi
+
+osascript<<END
+set myPath to ( POSIX file "$thePath" as alias )
+try
+	tell application "Path Finder" to set the (folder of the front window) to myPath
+on error -- no open folder windows
+	tell application "Path Finder" to open myPath
+end try
+END
+}
+
+
+if [[ $1 == "-f"   ]]; then
+	fdc $DocDir >/dev/null
+	print "Changing Finder display to $DocDir"
+	print "Current Working Directory remains $PWD"
+elif [[ $1 == "-F" ]]; then
+	builtin cd  $DocDir
+	fdc $DocDir >/dev/null
+	print "Changing directory and Finder display to $PWD"	 
+else
+	builtin cd $DocDir
+	echo $DocDir
+	print "Changing directory to $PWD"
+fi
+
+
+
+
