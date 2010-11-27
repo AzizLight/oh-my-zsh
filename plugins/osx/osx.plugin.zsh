@@ -1,3 +1,5 @@
+path=($ZSH/plugins/osx/bin $path)
+
 # -----------
 # - Aliases -
 # -----------
