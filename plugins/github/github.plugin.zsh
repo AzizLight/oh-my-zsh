@@ -5,9 +5,10 @@ compinit -i
 
 # git + hub = github
 # https://github.com/defunkt/hub
+# BUG: If hub is not found, this bit of code produces some funky stuff...
 function git()
 {
-	if [ -x $(which hub) ]; then
+	if [[ -x $(which hub) ]]; then
 		hub "$@"
 	else
 		git "$@"
