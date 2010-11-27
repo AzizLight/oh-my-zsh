@@ -20,6 +20,15 @@ alias cal="cal -m"
 alias df="df -h"
 alias du="du -h -c | egrep 'total'"
 
+# batch renamer.
+# ie: Files: foo-1.txt foo-2.txt foo-3.txt 
+#       mmv foo-*.txt bar-*.txt
+#     New files: bar-1.txt bar-2.txt bar-3.txt
+# Taken from the zsh-templates-osx project (http://code.google.com/p/zsh-templates-osx/)
+# More info here:
+# http://xanana.ucsc.edu/~wgscott/xtal/wiki/index.php/Explanations_for_each_zsh_template_file#030_functions.distributed.zsh
+alias mmv='noglob zmv -W'
+
 # ls
 alias l="ls -1"
 alias la="ls -1A"

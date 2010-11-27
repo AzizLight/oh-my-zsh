@@ -203,3 +203,11 @@ rationalise-dot() {
 }
 zle -N rationalise-dot
 bindkey . rationalise-dot
+
+# bc on the rocks
+autoload -U zcalc
+
+# mv on the rocks
+# check the following page for more info
+# http://xanana.ucsc.edu/~wgscott/xtal/wiki/index.php/Explanations_for_each_zsh_template_file#030_functions.distributed.zsh
+autoload -U zmv
