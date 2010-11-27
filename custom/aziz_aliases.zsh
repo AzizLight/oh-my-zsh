@@ -99,9 +99,6 @@ alias vp="php -v && php -d display_errors=on"
 # - CLI APPS -
 # ------------
 
-# autojump
-alias js="jumpstat"
-
 # jekyll
 alias jk="jekyll"
 alias jks="jekyll --server"
