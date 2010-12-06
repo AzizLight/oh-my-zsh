@@ -44,7 +44,6 @@ elif [[ $1 == "-F" ]]; then
 	print "Changing directory and Finder display to $PWD"	 
 else
 	builtin cd $DocDir
-	echo $DocDir
 	print "Changing directory to $PWD"
 fi
 
