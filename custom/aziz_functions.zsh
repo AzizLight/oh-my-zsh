@@ -33,7 +33,7 @@ mkcd () {
 rf () {
 	echo "\n\t$fg[red]Permanently removing ${*}...$fg[default]\n" &&
 	command rm -rf $* &&
-	echo "\n\t$fg[yellow]Items deleted: ${*}\n"
+	echo "\n\t$fg[yellow]Items deleted: ${*}\n$fg[yellow]"
 }
 
 # cp -R with nice feedback
