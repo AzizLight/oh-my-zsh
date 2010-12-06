@@ -10,7 +10,7 @@ alias -g ":p"="pbpaste"
 
 # Open Apps from the command line and open files using Apps from the command line (OS X only!)
 alias o="open -a"
-alias o.="o \"Finder\" ."
+alias o.="o \"Path Finder\" ."
 alias transmit='open -a Transmit'
 
 # Lock screen
@@ -96,7 +96,7 @@ EOF
 
 # Change to the current finder directory
 function cf() {
-  cd "$(pfd)"
+  cd "$(fp)"
 }
 # ------------------------------------------------------------------------------
 
