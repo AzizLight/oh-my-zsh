@@ -1,6 +1,9 @@
 # apply changes made to the zsh config
 alias s="source ~/.zshrc && echo \"$fg[green]Sourced ~/.zshrc$fg[default]\""
 
+# Replace the sudo prompt and add some color to it
+alias sudo="sudo -p \"$fg_bold[red][sudo] Password:$fg[default]\" "
+
 # Edit zsh/oh-my-zsh config files in the default editor
 alias mz='$EDITOR $ZSH'
 alias mrc='$EDITOR $HOME/.zshrc'
