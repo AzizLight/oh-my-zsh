@@ -35,17 +35,23 @@ alias mmv='noglob zmv -W'
 # ls
 alias l="ls -1"
 alias la="ls -1A"
-alias ll="ls -l"
+alias ll="ls -lh"
 alias ls.='ls -d .[^.]*'  # list hidden files only
 alias l.='ls -1 -d .[^.]*'  # list hidden files only
 # alias l.="ls -Ad .*" # alternative to the alias above
-alias ll.='ll -d .[^.]*' # list hidden files only
+alias ll.='ll -h -d .[^.]*' # list hidden files only
 alias "l*"="ls *"
+
+# the two aliases below were taken from https://github.com/jqr/dotfiles/blob/master/bash_profile.d/standard_improvements.sh
+alias recent='ls -lAt | head'
+alias old='ls -lAt | tail'
+
 
 # grep
 alias -g "?"="| grep"
 alias -g "e?"="| egrep"
 alias -g "f?"="| fgrep"
+alias fa="alias ? $1" # find an alias
 
 # cd
 alias .="p"
