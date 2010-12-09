@@ -11,21 +11,12 @@ alias -g ":p"="pbpaste"
 # Open Apps from the command line and open files using Apps from the command line (OS X only!)
 alias o="open -a"
 alias o.="o \"Path Finder\" ."
-alias transmit='open -a Transmit'
 
 # Lock screen
 # Taken from here: http://github.com/rtomayko/dotfiles/blob/rtomayko/bin/lock-screen
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
-# I disabled MAMP Pro's Dock icon using this method: http://blog-en.mamp.info/2010/02/how-to-hide-mamp-icon-from-your-dock.html
-# Now MAMP Pro doesn't have a dock icon, a menu bar or the little 'x' button to close the main window
-# so here is a little alias to quit MAMP Pro from the command line
-alias mamp-quit="quit 'MAMP PRO'"
-
 alias ql="qlmanage -p 2>/dev/null" # launch quicklook on a file
-
-# refresh all GeekTool Geeklets
-alias geek="osascript -e 'tell application \"geektool\" to refresh all'"
 
 # Force Quit Firefox
 alias killff="kill firefox-bin"
@@ -99,6 +90,16 @@ function cf() {
   cd "$(fp)"
 }
 # ------------------------------------------------------------------------------
+
+# taken from https://github.com/jqr/dotfiles/blob/master/bash_profile.d/notification.sh
+notify() {
+  growlnotify -m $2 $1 2> /dev/null
+  echo "**********************************************************************"
+  echo "**"
+  echo "** $2: $1"
+  echo "**"
+  echo "**********************************************************************"
+}
 
 # Quit an OS X application from the command line
 quit () {
