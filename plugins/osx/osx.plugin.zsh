@@ -26,12 +26,6 @@ alias show-desktop="defaults write com.apple.finder CreateDesktop -bool true && 
 # Force Quit Firefox
 alias killff="kill firefox-bin"
 
-# Homebrew
-alias -g b="brew"
-alias bi="b install"
-alias bs="b search"
-alias "b?"="b info"
-
 # Growl - Start and Stop
 # TODO: Create a "toggle-growl" function
 alias start-growl="osascript -e 'tell application \"GrowlHelperApp\" to activate'"
