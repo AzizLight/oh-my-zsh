@@ -14,3 +14,10 @@ function git()
 		git "$@"
 	fi
 }
+
+# TODO: cleanup
+github-url () { git config remote.origin.url | sed -En 's/git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'; }
+
+# TODO: setup as a git alias in ~/.gitconfig
+# taken from https://github.com/bkerley/zshkit/blob/master/06_git
+github () { open $(github-url); }

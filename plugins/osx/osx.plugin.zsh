@@ -36,6 +36,17 @@ alias check-growl="osascript -e 'tell application \"System Events\"
     count of (every process whose name is \"GrowlHelperApp\") > 0
 end tell'"
 
+# taken from https://github.com/bkerley/zshkit/blob/master/05_editor
+# Abuse the "open" command on OS X
+if [[ $OSTYPE[1,6] == "darwin" ]]; then
+  for s in mp3 wav aac \
+    avi mp4 m4v mov qt mpg mpeg \
+    jpg png psd bmp gif tif tiff \
+    ps pdf html dmg; do
+    alias -s $s=open
+  done
+fi
+
 # -------------
 # - Functions -
 # -------------

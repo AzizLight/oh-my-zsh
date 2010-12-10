@@ -38,3 +38,7 @@ alias ggpnp='git pull origin $(current_branch) && git push origin $(current_bran
 # Works only on OS X
 # TODO: the alias sucks ass, rename it to something better!
 alias gclp="git clone $(pbpaste)"
+
+# TODO: cleanup
+# taken from https://github.com/bkerley/zshkit/blob/master/06_git
+git-scoreboard () { git log | grep '^Author' | sort | uniq -ci | sort -r; }
