@@ -18,6 +18,11 @@ alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resourc
 
 alias ql="qlmanage -p 2>/dev/null" # launch quicklook on a file
 
+# Show/Hide Desktop icons.
+# TODO: create a toggle alias/function
+alias hide-desktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias show-desktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
 # Force Quit Firefox
 alias killff="kill firefox-bin"
 
