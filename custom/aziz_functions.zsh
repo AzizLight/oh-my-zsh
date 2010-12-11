@@ -43,12 +43,17 @@ cr () {
 	echo "\n\t$fg[green]Items copied successfully!!$fg[default]\n"
 }
 
-# Download a file with curl
+# Download a file in the current directory using curl
 get () {
-	builtin cd ~/Downloads &&
-	curl -O $1 &&
-	echo "\nDownload Complete : ${1}\n" &&
-	builtin cd $OLDPWD
+  curl -O $1 &&
+  echo "\n$fg[green]Download Complete:$fg[default] ${1}\n"
+}
+
+# Download a file in the Downloads directory using curl
+download () {
+  builtin cd ~/_hazel &&
+  get $1
+  builtin cd $OLDPWD
 }
 
 # Switches two files contents
