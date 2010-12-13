@@ -66,14 +66,15 @@ switch() {
 
 # taken from https://github.com/jqr/dotfiles/blob/master/bash_profile.d/standard_improvements.sh
 # TODO: Monotonous. add some colors!
-touch() {
-  dir=`expr "$1" : '\(.*\/\)'`
-  if [ $dir ] 
-    then
-    mkdir -p $dir
-  fi
-  /usr/bin/touch $1
-}
+# FIXME: this function makes it impossible to create more than one file at a time...
+# touch() {
+#   dir=`expr "$1" : '\(.*\/\)'`
+#   if [ $dir ] 
+#     then
+#     mkdir -p $dir
+#   fi
+#   /usr/bin/touch $1
+# }
 
 # Fewer keystrokes to search man page of command
 mg (){ man ${1} | egrep ${2} | more; }
