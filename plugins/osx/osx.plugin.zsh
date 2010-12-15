@@ -68,6 +68,9 @@ function tab() {
 EOF
 }
 
+# TODO: Create a function to open applications more easily.
+#   Basically extend the open command.
+
 # ------------------------------------------------------------------------------
 # The three functions below were taken from this gist:
 # https://gist.github.com/710805
