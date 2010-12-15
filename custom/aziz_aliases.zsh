@@ -121,5 +121,9 @@ alias vp="php -v && php -d display_errors=on"
 alias jk="jekyll"
 alias jks="jekyll --server"
 
+# Homesick dotfiles
+alias c.="c ~/.homesick/repos/.aziz/home"
+alias s.="homesick symlink .aziz"
+
 # Get ip address
 alias ip="curl ifconfig.me"
