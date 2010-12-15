@@ -131,7 +131,7 @@ bak () {
 	echo "\n\t$fg[green]Backup Complete$fg[default]\n"
 }
 
-# Less radical alternative to the function above
+# Less radical alternative to the backup function above
 # Taken from: http://github.com/rtomayko/dotfiles/blob/rtomayko/bin/orig
 orig ()
 {
@@ -143,6 +143,23 @@ orig ()
             cp -p "$f" "$f.orig"
         done
     fi
+}
+
+# Yet another quick backup function
+# Taken from bash-it: https://github.com/revans/bash-it/blob/master/plugins/base.plugin.bash
+# 
+# back up file with timestamp
+# useful for administrators and configs
+buf () {
+  filename=$1
+  filetime=$(date +%Y%m%d_%H%M%S)
+  cp ${filename} ${filename}_${filetime}
+}
+
+# run a command quietly, suppressing any output whatsoever
+# Taken from bash-it: https://github.com/revans/bash-it/blob/master/plugins/base.plugin.bash
+quiet() {
+  $* &> /dev/null &
 }
 
 # check if a domain name is registered
