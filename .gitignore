@@ -6,3 +6,5 @@ NOTES.markdown
 *.zsh.scratch
 themes/test.zsh-theme
 temp
+cache
+custom/autojump.zsh
