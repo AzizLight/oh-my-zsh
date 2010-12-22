@@ -13,7 +13,6 @@ function git()
 	fi
 }
 
-# TODO: cleanup
 github-url () { git config remote.origin.url | sed -En 's/git(@|:\/\/)github.com(:|\/)(.+)\/(.+).git/https:\/\/github.com\/\3\/\4/p'; }
 
 # TODO: setup as a git alias in ~/.gitconfig
