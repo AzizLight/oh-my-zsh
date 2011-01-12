@@ -22,7 +22,7 @@ mk () {
 }
 
 # Make a new dir and move in it
-mkcd () {
+mkc () {
 	command mkdir -p $1 &&
 	echo "\n\tFolders created: $fg[green]${1}$fg[default]" &&
 	builtin cd $1 &&
