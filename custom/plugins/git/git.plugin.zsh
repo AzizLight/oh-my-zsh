@@ -2,6 +2,8 @@
 source $ZSH/plugins/git/git.plugin.zsh
 
 # Aliases
+alias gcm='git commit -m'
+alias ga='git add .'
 alias gs='git status'
 alias gcb="git checkout -b"
 alias gba='git branch -a --color'
