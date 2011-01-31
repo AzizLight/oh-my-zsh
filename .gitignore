@@ -1,10 +1,10 @@
 locals.zsh
 log/.zsh_history
 projects.zsh
-!custom/example.zsh
 NOTES.markdown
 *.zsh.scratch
 themes/test.zsh-theme
 temp
 cache
 custom/autojump.zsh
+!custom/example.zsh
