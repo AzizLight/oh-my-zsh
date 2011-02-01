@@ -27,6 +27,7 @@ compdef _xtdo xtdo
 
 # --------------------------------------------------------------------------------
 
+alias tl="t l"
 alias tla="t l a"
 alias ta="t a"
 alias td="t d"
