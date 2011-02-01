@@ -42,7 +42,7 @@ function extract() {
     unset REMOVE_ARCHIVE
     
     if test "$1" = "-r"; then
-        REMOVE=1
+        REMOVE_ARCHIVE=1
         shift
     fi
   if [[ -f $1 ]]; then
