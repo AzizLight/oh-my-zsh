@@ -1,5 +1,6 @@
 # ls colors
 autoload colors; colors;
+[[ -z "$LSCOLORS" ]] && export LSCOLORS="Gxfxcxdxbxegedabagacad"
 
 # Enable ls colors
 if [ "$DISABLE_LS_COLORS" != "true" ]
