@@ -65,6 +65,7 @@ alias wia="which -a"
 alias www="c ~/Sites"
 alias cs="c ~/Sources"
 alias csgit="c ~/Sources/git"
+alias cb="~/Sources/aziz/git/azizlight.github.com"
 
 # pwd
 alias pc="builtin pwd|tr -d '\n'|pbcopy" # copy the path to the current folder to the clipboard
