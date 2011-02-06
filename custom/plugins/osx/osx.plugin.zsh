@@ -4,9 +4,9 @@ source $ZSH/plugins/osx/osx.plugin.zsh
 # add the osx plugin specific bin dir
 path=($ZSH/custom/plugins/osx/bin $path)
 
-# -----------
+# ------------------------------------------------------------------------------
 # - Aliases -
-# -----------
+# ------------------------------------------------------------------------------
 
 # pbcopy and pbpaste
 alias -g ":c"=" | pbcopy"
@@ -19,8 +19,6 @@ alias o.="o \"Path Finder\" ."
 # Lock screen
 # Taken from here: http://github.com/rtomayko/dotfiles/blob/rtomayko/bin/lock-screen
 alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-alias ql="qlmanage -p 2>/dev/null" # launch quicklook on a file
 
 # Show/Hide Desktop icons.
 # TODO: create a toggle alias/function
@@ -50,9 +48,9 @@ if [[ $OSTYPE[1,6] == "darwin" ]]; then
   done
 fi
 
-# -------------
+# ------------------------------------------------------------------------------
 # - Functions -
-# -------------
+# ------------------------------------------------------------------------------
 
 # cd to the directory in the frontmost TextMate window
 # optionally, open the directory in FInder/Path Finder
@@ -126,6 +124,55 @@ relaunch () {
 zap () {
     open -a AppZapper /Applications/"${1}".app
 }
+
+# ------------------------------------------------------------------------------
+# These functions were taken from:
+# https://github.com/SpookyET/oh-my-zsh/blob/master/plugins/osx/osx.plugin.zsh
+
+# launch quicklook on a file
+function ql() {
+  (( $# > 0 )) && qlmanage -p $* &>/dev/null
+}
+
+# Open a new tab in the current terminal
+# Works with Terminal.app and iTerm
+function tab() {
+  local command="cd \\\"$PWD\\\""
+  (( $# > 0 )) && command="${command}; $*"
+
+  the_app=$(
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        name of first item of (every process whose frontmost is true)
+      end tell
+EOF
+  )
+
+  [[ "$the_app" == 'Terminal' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "System Events"
+        tell process "Terminal" to keystroke "t" using command down
+        tell application "Terminal" to do script "${command}" in front window
+      end tell
+EOF
+  }
+
+  [[ "$the_app" == 'iTerm' ]] && {
+    osascript 2>/dev/null <<EOF
+      tell application "iTerm"
+        set current_terminal to current terminal
+        tell current_terminal
+          launch session "Default Session"
+          set current_session to current session
+          tell current_session
+            write text "${command}"
+          end tell
+        end tell
+      end tell
+EOF
+  }
+}
+# ------------------------------------------------------------------------------
 
 # open a manpage in preview
 # pman () {
