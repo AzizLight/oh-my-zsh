@@ -4,6 +4,7 @@ source $ZSH/plugins/git/git.plugin.zsh
 # Aliases
 alias gcm='git commit -m'
 alias ga='git add .'
+alias gacm='git add . && git commit -m'
 alias gd='git diff'
 alias gs='git status'
 alias gcb="git checkout -b"
