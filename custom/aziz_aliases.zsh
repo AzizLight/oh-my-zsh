@@ -123,8 +123,8 @@ alias jk="jekyll"
 alias jks="jekyll --server"
 
 # Homesick dotfiles
-alias c.="c ~/.homesick/repos/.aziz/home"
-alias s.="homesick symlink .aziz"
+alias c.="c ~/.homesick/repos/"
+alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 
 # Get ip address
 alias ip="curl ifconfig.me"
