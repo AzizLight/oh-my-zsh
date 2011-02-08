@@ -1,6 +1,12 @@
 # apply changes made to the zsh config
 alias s="source ~/.zshrc && echo \"$fg[green]Sourced ~/.zshrc$fg[default]\""
 
+# Switch to the default (complex) prompt
+alias dp="unset az_prompt_type; s ; clear"
+
+# Switch to the simple prompt
+alias sp="export az_prompt_type='simple' ; s ; clear"
+
 # Replace the sudo prompt and add some color to it
 alias sudo="sudo -p \"$fg_bold[red][sudo] Password:$fg[default]\" "
 

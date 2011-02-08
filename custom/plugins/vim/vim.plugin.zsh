@@ -6,5 +6,3 @@ alias vzrc="v ~/.oh-my-zsh/ ~/.zshrc"
 alias vv="v ~/.{,g}vimrc.local"
 alias vvv="v ~/.{,g}vimrc{,.local}"
 alias vsnip="v ~/.vim/snippets/"
-
-alias conque="export az_prompt_type='simple' ; s ; clear"
