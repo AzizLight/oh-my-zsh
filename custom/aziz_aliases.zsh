@@ -11,9 +11,9 @@ alias sp="export az_prompt_type='simple' ; s ; clear"
 alias sudo="sudo -p \"$fg_bold[red][sudo] Password:$fg[default]\" "
 
 # Edit zsh/oh-my-zsh config files in the default editor
-alias mz='$EDITOR $ZSH'
-alias mrc='$EDITOR $HOME/.zshrc'
-alias mzrc='$EDITOR $HOME/.zshrc && $EDITOR $ZSH'
+alias ez='$VISUAL $ZSH'
+alias erc='$EDITOR $HOME/.zshrc'
+alias ezrc='$VISUAL $HOME/.zshrc && $EDITOR $ZSH'
 alias cz='c $ZSH'
 
 # rm, cp, mv, mkdir, etc <- regular stuff override
