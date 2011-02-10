@@ -7,3 +7,7 @@ alias rt="r test/test_*"
 # Fully replace irb by ripl
 alias irb="ripl"
 alias i="irb"
+
+# Open the pickaxe in Preview.app
+# only works on OS X
+alias px="open ~/\"Documents/eBooks/Ruby/Programming Ruby 1.9/Programming Ruby 1.9.pdf\""
