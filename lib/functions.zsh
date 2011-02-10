@@ -1,10 +1,12 @@
 ## fixme, i duplicated this in xterms - oops
 function title {
   if [[ $TERM == "screen" ]]; then
-    # Use these two for GNU Screen:
-    print -nR $'\033k'$1$'\033'\\\
+    if [ "$DISABLE_AUTO_TITLE_IN_SCREEN" != "true" ]; then
+      # Use these two for GNU Screen:
+      print -nR $'\033k'$1$'\033'\\\
 
-    print -nR $'\033]0;'$2$'\a'
+      print -nR $'\033]0;'$2$'\a'
+    fi
   elif [[ ($TERM =~ "^xterm") ]] || [[ ($TERM == "rxvt") ]]; then
     # Use this one instead for XTerms:
     print -nR $'\033]0;'$*$'\a'
