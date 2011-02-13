@@ -185,3 +185,13 @@ EOF
 pman () {
     man -t $* | ps2pdf - - | open -g -f -a /Applications/Preview.app
 }
+
+# Open man pages in Google Chrome.
+# This functions requires bcat (`gem install bcat`)
+# and Google Chrome.
+# The output also looks like shit, so just use pman instead.
+#
+# Taken from: http://apple.stackexchange.com/questions/5435/terminal-tips-and-tricks-for-mac-os-x?page=2&tab=votes#answer-5469
+bman () {
+    gunzip < ~man -w $@~ | groff -Thtml -man | bcat -b "Google Chrome"
+}
