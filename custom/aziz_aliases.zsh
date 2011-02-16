@@ -134,7 +134,3 @@ alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 
 # Get ip address
 alias ip="curl ifconfig.me"
-
-# xtdo (github.com/xaviershay/xtdo)
-# command-line todo list manager
-alias t="xtdo"
