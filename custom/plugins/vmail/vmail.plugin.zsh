@@ -6,7 +6,7 @@ vm() {
   if [[ $1 = "r" ]]; then
     rvm 1.9.2 exec vmail -c ~/.vmail-r
   elif [[ $1 = "z" ]]; then
-    rvm 1.9.2 exec vmail -c ~/.vmail-a
+    rvm 1.9.2 exec vmail -c ~/.vmail-z
   elif [[ $1 = "y" ]]; then
     rvm 1.9.2 exec vmail -c ~/.vmail-y
   elif [[ $1 = "l" ]]; then
@@ -15,6 +15,6 @@ vm() {
     rvm 1.9.2 exec vmail -c ~/.vmail-rsub
   else
     echo "Please specify an account."
-    cat list_of_emails
+    cat $list_of_emails
   fi
 }
