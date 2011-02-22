@@ -16,9 +16,6 @@ alias erc='$EDITOR $HOME/.zshrc'
 alias ezrc='$VISUAL $HOME/.zshrc && $EDITOR $ZSH'
 alias cz='c $ZSH'
 
-# always ask to remove the archive after extracting
-alias x="x -r"
-
 # rm, cp, mv, mkdir, etc <- regular stuff override
 if [[ $OSTYPE[1,6] == 'darwin' ]]; then
   alias ls="CLICOLOR_FORCE=1 ls -FG"
