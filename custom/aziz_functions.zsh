@@ -188,7 +188,7 @@ showcolors () {
 
 # List & display all 256 colors
 showcolors256 () {
-	for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
+	for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
 # search for various types or README file in dir and display them in $PAGER

@@ -1,5 +1,5 @@
 # On OS X, ssh-agent is started automatically
-if [[ $OSTYPE[1,6] == 'linux' ]]; then
+if [[ $OSTYPE[1,6] == 'linux-' ]]; then
 
     SSH_ENV="$HOME/.ssh/environment"
 
