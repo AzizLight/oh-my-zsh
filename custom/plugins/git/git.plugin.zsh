@@ -15,8 +15,8 @@ alias ggl="git log --max-count=20 --graph --pretty=format:'%Cred%h%Creset %an: %
 # clone what's in the clipboard
 # Works only on OS X
 if [[ $OSTYPE[1,6] == 'darwin' ]]; then
-	# TODO: the alias sucks ass, rename it to something better!
-	alias gclp="git clone $(pbpaste)"
+  # TODO: the alias sucks ass, rename it to something better!
+  alias gclp="git clone $(pbpaste)"
 fi
 
 # taken from https://github.com/bkerley/zshkit/blob/master/06_git
