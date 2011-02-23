@@ -85,7 +85,7 @@ mg (){ man ${1} | egrep ${2} | more; }
 quickfind () { find . -maxdepth 4 -iname "*$1*" }
 
 # Create a zip archive
-z () {
+zz () {
 	zip -r $1 $1
 }
 
