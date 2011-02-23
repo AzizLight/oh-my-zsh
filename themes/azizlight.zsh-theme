@@ -10,7 +10,7 @@ if [[ $az_prompt_type = 'simple' ]]
 then
   # If the previous command failed, the prompt character will be red
   PROMPT='%{$fg_bold[red]%}➜  %{$reset_color%}'
-  RPROMPT='%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}'
+  RPROMPT='%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} '
 else
   # If the previous command failed, the prompt character will be red
   PROMPT='%{$fg_bold[red]%}➜  %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} $(git_prompt_info)
