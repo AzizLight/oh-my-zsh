@@ -31,6 +31,11 @@ alias cal="cal -m"
 alias df="df -h"
 alias du="du -h -c | egrep 'total'"
 
+# in linux, ack is actually ack-grep
+# if [[ $OSTYPE[1,6] == 'linux-' ]]; then
+#   alias ack="ack-grep"
+# fi
+
 # batch renamer.
 # ie: Files: foo-1.txt foo-2.txt foo-3.txt 
 #       mmv foo-*.txt bar-*.txt
@@ -75,8 +80,20 @@ alias cs="c ~/Sources"
 alias csgit="c ~/Sources/git"
 alias cb="~/Sources/aziz/git/azizlight.github.com"
 
-# pwd
-alias pc="builtin pwd|tr -d '\n'|pbcopy" # copy the path to the current folder to the clipboard
+# pbcopy aliases
+if [[ $OSTYPE[1,6] == 'darwin' ]]; then
+  # Copy ssh key to the clipboard
+  alias ss="cat ~/.ssh/id_rsa.pub|pbcopy"
+
+  # copy the path to the current folder to the clipboard
+  alias pc="builtin pwd|tr -d '\n'|pbcopy"
+elif [[ $OSTYPE[1,6] == 'linux-' ]]; then
+  # Copy ssh key to the clipboard
+  alias ss="cat ~/.ssh/id_rsa.pub|xclip -i"
+
+  # copy the path to the current folder to the clipboard
+  alias pc="builtin pwd|tr -d '\n'|xclip -i"
+fi
 
 # make file(s) executable
 alias x="chmod a+x"
@@ -95,9 +112,6 @@ alias -g ":l"=" | less -R"
 
 # most
 alias -g ":m"="|most"
-
-# Copy ssh key to the clipboard
-alias ss="cat ~/.ssh/id_rsa.pub|pbcopy"
 
 # Ping
 alias ping="ping -c 5"

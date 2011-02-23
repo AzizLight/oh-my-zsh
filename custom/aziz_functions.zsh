@@ -5,7 +5,11 @@ p () {
 
 # Copy the path to a file (including the filename)
 pcf () {
-  echo "$PWD/$1" |tr -d '\n'| pbcopy 
+  if [[ $OSTYPE[1,6] == 'darwin' ]]; then
+    echo "$PWD/$1" |tr -d '\n'| pbcopy
+  elif [[ $OSTYPE[1,6] == 'linux-' ]]; then
+    echo "$PWD/$1" |tr -d '\n'| xclip -i
+  fi
 }
 
 # show in which dir I am after a cd
