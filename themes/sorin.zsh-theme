@@ -2,16 +2,16 @@
 #          FILE:  sorin.zsh-theme
 #   DESCRIPTION:  oh-my-zsh theme file.
 #        AUTHOR:  Sorin Ionescu (sorin.ionescu@gmail.com)
-#       VERSION:  1.0.0
+#       VERSION:  1.0.2
 #    SCREENSHOT:  http://i.imgur.com/aipDQ.png
 # ------------------------------------------------------------------------------
 
 
 if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
   MODE_INDICATOR="%{$fg_bold[red]%}❮%{$reset_color%}%{$fg[red]%}❮❮%{$reset_color%}"
-  local return_status="%{$fg[red]%}%(?::⏎)%{$reset_color%}"
+  local return_status="%{$fg[red]%}%(?..⏎)%{$reset_color%}"
   
-  PROMPT='%{$fg[cyan]%}%c$(git_prompt_info)%{$fg_bold[green]%}%(!.#.❯)%{$reset_color%} '
+  PROMPT='%{$fg[cyan]%}%c$(git_prompt_info) %(!.%{$fg_bold[red]%}#.%{$fg_bold[green]%}❯)%{$reset_color%} '
 
   ZSH_THEME_GIT_PROMPT_PREFIX=" %{$fg[blue]%}git%{$reset_color%}:%{$fg[red]%}"
   ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -29,7 +29,7 @@ if [[ "$TERM" != "dumb" ]] && [[ "$DISABLE_LS_COLORS" != "true" ]]; then
 else 
   MODE_INDICATOR="❮❮❮"
   local return_status="%(?::⏎)"
-
+  
   PROMPT='%c$(git_prompt_info) %(!.#.❯) '
 
   ZSH_THEME_GIT_PROMPT_PREFIX=" git:"
