@@ -1,6 +1,3 @@
-# Inherit from the default github plugin
-source $ZSH/plugins/github/github.plugin.zsh
-
 # git + hub = github
 # https://github.com/defunkt/hub
 # BUG: If hub is not found, this bit of code produces some funky stuff...
