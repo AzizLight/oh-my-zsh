@@ -22,16 +22,18 @@ function az_git_prompt_info {
   local NORMAL="$fg[default]"
   local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
   if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-      # local COLOR=${RED}
       local COLOR="$fg[red]"
   elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
       local COLOR="$fg[yellow]"
   else
       local COLOR="$fg[green]"
   fi
-  local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${NORMAL}"
+
+  if [ "$MINUTES_SINCE_LAST_COMMIT" -lt 180 ]; then
+    local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m:${NORMAL}"
+  fi
   # The __git_ps1 function inserts the current git branch where %s is
-  local GIT_PROMPT="${SINCE_LAST_COMMIT}:%{$fg[magenta]%}"
+  local GIT_PROMPT="${SINCE_LAST_COMMIT}%{$fg[magenta]%}"
   
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${GIT_PROMPT}${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
