@@ -1,3 +1,4 @@
+alias s="source ~/.zshrc && az_echo_source"
 # Switch to the default (complex) prompt
 alias dp="unset az_prompt_type; s ; clear"
 

@@ -1,7 +1,6 @@
 # apply changes made to the zsh config
-s ()
+az_echo_source ()
 {
-  source ~/.zshrc
   echo "$fg[green]Sourced ~/.zshrc$fg[default]"
 }
 
