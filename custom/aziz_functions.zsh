@@ -1,3 +1,10 @@
+# apply changes made to the zsh config
+s ()
+{
+  source ~/.zshrc
+  echo "$fg[green]Sourced ~/.zshrc$fg[default]"
+}
+
 # pwd with style
 p () {
 	print -P "You are in: %F{cyan}%K{blue}$PWD%f%k\n"

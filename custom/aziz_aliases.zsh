@@ -1,6 +1,3 @@
-# apply changes made to the zsh config
-alias s="source ~/.zshrc && echo \"$fg[green]Sourced ~/.zshrc$fg[default]\""
-
 # Switch to the default (complex) prompt
 alias dp="unset az_prompt_type; s ; clear"
 
