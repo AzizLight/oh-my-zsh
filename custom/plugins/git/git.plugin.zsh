@@ -14,8 +14,12 @@ alias ggl="git log --max-count=20 --graph --pretty=format:'%Cred%h%Creset %an: %
 
 # clone what's in the clipboard
 # Works only on OS X
-# TODO: the alias sucks ass, rename it to something better!
-alias gclp="git clone $(pbpaste)"
+if [[ $OSTYPE[1,6] == 'darwin' ]]; then
+  # TODO: the alias sucks ass, rename it to something better!
+  alias gclp="git clone $(pbpaste)"
+elif [[ $OSTYPE[1,6] == 'linux-' ]]; then
+  alias gclp="git clone $(xclip -o)"
+fi
 
 # taken from https://github.com/bkerley/zshkit/blob/master/06_git
 git-scoreboard () { git log | grep '^Author' | sort | uniq -ci | sort -r; }

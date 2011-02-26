@@ -5,7 +5,11 @@ p () {
 
 # Copy the path to a file (including the filename)
 pcf () {
-  echo "$PWD/$1" |tr -d '\n'| pbcopy 
+  if [[ $OSTYPE[1,6] == 'darwin' ]]; then
+    echo "$PWD/$1" |tr -d '\n'| pbcopy
+  elif [[ $OSTYPE[1,6] == 'linux-' ]]; then
+    echo "$PWD/$1" |tr -d '\n'| xclip -i
+  fi
 }
 
 # show in which dir I am after a cd
@@ -188,7 +192,7 @@ showcolors () {
 
 # List & display all 256 colors
 showcolors256 () {
-	for code in {000..255}; do print -P -- "$code: %F{$code}Test%f"; done
+	for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
 # search for various types or README file in dir and display them in $PAGER

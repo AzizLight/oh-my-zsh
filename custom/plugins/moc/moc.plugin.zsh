@@ -1,5 +1,6 @@
 alias jack="jackd -d coreaudio &"
 
+alias moc="mocp"
 # moc music server
 alias mog="mi-growl.sh &> /dev/null &" # launch growl support
 alias mof="mocp -f" # next
