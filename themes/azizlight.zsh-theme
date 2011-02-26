@@ -46,7 +46,7 @@ then
   RPROMPT='%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} '
 else
   # If the previous command failed, the prompt character will be red
-  PROMPT='%{$fg_bold[red]%}➜  %{$fg_bold[green]%}%c%{$reset_color%} $(az_git_prompt_info)
+  PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%c%{$reset_color%} $(az_git_prompt_info)
 %(?,%{$fg[white]%}$(prompt_char)%{$reset_color%},%{$fg[red]%}$(prompt_char)%{$reset_color%}) '
 
   # Taken-from-Sorin's-Theme------------------------------------------------------
