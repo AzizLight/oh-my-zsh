@@ -16,7 +16,9 @@ ZSH_THEME_TERM_TITLE_IDLE="%n@%m: %~"
 
 #Appears when you have the prompt
 function precmd {
-  title $ZSH_THEME_TERM_TAB_TITLE_IDLE $ZSH_THEME_TERM_TITLE_IDLE
+  if [[ "$TERM" != "screen" ]]; then
+    title $ZSH_THEME_TERM_TAB_TITLE_IDLE $ZSH_THEME_TERM_TITLE_IDLE
+  fi
 }
 
 # rupa/z
@@ -24,8 +26,10 @@ source $ZSH/bin/z.sh
 
 #Appears at the beginning of (and during) of command execution
 function preexec {
-  local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
-  title "$CMD" "%100>...>$2%<<"
+  if [[ "$TERM" != "screen" ]]; then
+    local CMD=${1[(wr)^(*=*|sudo|ssh|-*)]} #cmd name only, or if this is sudo or ssh, the next cmd
+    title "$CMD" "%100>...>$2%<<"
+  fi
 
   # rupa/z
   z --add "$(pwd -P)"
