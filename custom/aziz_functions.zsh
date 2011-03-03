@@ -217,6 +217,8 @@ readme ()
 
 # Fortune Cookie
 fortuneCookie() {
+  # TODO: Check that the required commands are installed
+  #
   # List of cow files available. The are 46 elements in the array.
   # The is probably a way to make this array dynamic,
   # but I don't have the patience or the time to find out how
@@ -263,3 +265,23 @@ autoload -U zcalc
 # check the following page for more info
 # http://xanana.ucsc.edu/~wgscott/xtal/wiki/index.php/Explanations_for_each_zsh_template_file#030_functions.distributed.zsh
 autoload -U zmv
+
+# Quickly switch between vim and mate
+set_editor ()
+{
+  if [[ $1 == "mate" ]]; then
+    local my_editor=$1
+    echo "Editor set to $fg[magenta]mate$fg[default]"
+  elif [[ $1 == "vim" ]]; then
+    local my_editor=$1
+    echo "Editor set to $fg[green]vim$fg[default]"
+  else
+    local my_editor="vim"
+    echo "Editor set to $fg[green]vim$fg[default]"
+  fi
+  
+  export EDITOR=$my_editor
+  export FCEDIT=$my_editor
+  export VISUAL=$my_editor
+  export GIT_EDITOR=$my_editor
+}
