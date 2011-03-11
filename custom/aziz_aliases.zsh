@@ -5,6 +5,9 @@ alias dp="unset az_prompt_type; s ; clear"
 # Switch to the simple prompt
 alias sp="export az_prompt_type='simple' ; s ; clear"
 
+# Add the bin dir in the current dir to the PATH
+alias include_bin="export PATH=./bin:\$PATH"
+
 # Replace the sudo prompt and add some color to it
 alias sudo="sudo -p \"$fg_bold[red][sudo] Password:$fg[default]\" "
 
