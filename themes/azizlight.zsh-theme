@@ -39,14 +39,21 @@ function az_git_prompt_info {
 }
 # ------------------------------------------------------------------------------
 
+
+if [[ $(hostname) == "naboo" ]]; then
+  local az_prompt_char="%{$fg_bold[blue]%}➜"
+elif [[ $(hostname) == "tatooine" ]]; then
+  local az_prompt_char="%{$fg_bold[red]%}➜"
+fi
+
 if [[ $az_prompt_type = 'simple' ]]
 then
   # If the previous command failed, the prompt character will be red
-  PROMPT='%{$fg_bold[red]%}➜  %{$reset_color%}'
+  PROMPT='$az_prompt_char %{$reset_color%}'
   RPROMPT='%{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%} '
 else
   # If the previous command failed, the prompt character will be red
-  PROMPT='%{$fg_bold[red]%}➜ %{$fg_bold[green]%}%c%{$reset_color%} $(az_git_prompt_info)
+  PROMPT='$az_prompt_char %{$fg_bold[green]%}%c%{$reset_color%} $(az_git_prompt_info)
 %(?,%{$fg[white]%}$(prompt_char)%{$reset_color%},%{$fg[red]%}$(prompt_char)%{$reset_color%}) '
 
   # Taken-from-Sorin's-Theme------------------------------------------------------

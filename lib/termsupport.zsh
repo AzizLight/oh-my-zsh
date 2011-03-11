@@ -22,7 +22,7 @@ function precmd {
 }
 
 # rupa/z
-source $ZSH/bin/z.sh
+source $ZSH/custom/bin/z.sh
 
 #Appears at the beginning of (and during) of command execution
 function preexec {
