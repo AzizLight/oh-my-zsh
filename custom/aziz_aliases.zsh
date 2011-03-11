@@ -151,3 +151,5 @@ alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 
 # Get ip address
 alias ip="curl ifconfig.me"
+
+alias C="ruby /Users/aziz/Dropbox/bin/C.rb"
