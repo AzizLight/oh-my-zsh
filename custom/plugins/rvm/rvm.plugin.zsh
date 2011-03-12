@@ -6,6 +6,7 @@ compinit -i
 alias rg="rvm gemset"
 alias rgl="rvm gemset list"
 alias rrc="rvm --rvmrc --create"
+alias rd="rvm use default"
 
 # get the ruby name and version as well as the gemset
 # from https://github.com/jtzemp/oh-my-zsh/blob/deb452e823876e26bc91947fdd55f75873b02c1d/lib/rvm.zsh#L9
