@@ -126,17 +126,6 @@ alias -g ":upper"=" | tr \"[:lower:]\" \"[:upper:]\""
 # convert string to lowercase
 alias -g ":lower"=" | tr \"[:upper:]\" \"[:lower:]\""
 
-# -------
-# - PHP -
-# -------
-
-# This is kind of a hack to force MAMP's php to take precedence over OS X's and
-# to force php cli to use the same php.ini config file as the active php
-alias php="/Applications/MAMP/bin/php5.2/bin/php --php-ini /Library/Application\ Support/appsolute/MAMP\ PRO/conf/php.ini"
-
-# Validate PHP from the Command Line
-alias vp="php -v && php -d display_errors=on"
-
 # ------------
 # - CLI APPS -
 # ------------
