@@ -31,6 +31,7 @@ alias fgrep="fgrep --color=auto"
 alias cal="cal -m"
 alias df="df -h"
 alias du="du -h -c | egrep 'total'"
+alias ps="ps acux | head"
 
 # in linux, ack is actually ack-grep
 # if [[ $OSTYPE[1,6] == 'linux-' ]]; then
