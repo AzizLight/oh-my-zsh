@@ -21,9 +21,12 @@ alias cz='c $ZSH'
 if [[ $OSTYPE[1,6] == 'darwin' ]]; then
   alias ls="CLICOLOR_FORCE=1 ls -FG"
 fi
+alias sudo="sudo -E"
 alias rm="rm -iv"
 alias mv="mv -iv"
 alias cp="cp -iv"
+alias chmod="chmod -v"
+alias chown="chown -v"
 alias mkdir="mkdir -vp"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -31,12 +34,13 @@ alias fgrep="fgrep --color=auto"
 alias cal="cal -m"
 alias df="df -h"
 alias du="du -h -c | egrep 'total'"
-alias ps="ps acux | head"
+alias ps="ps auxc | head"
+alias -- +x="chmod a+x"
 
 # in linux, ack is actually ack-grep
-# if [[ $OSTYPE[1,6] == 'linux-' ]]; then
-#   alias ack="ack-grep"
-# fi
+if [[ $OSTYPE[1,6] == 'linux-' ]]; then
+  alias ack="ack-grep"
+fi
 
 # batch renamer.
 # ie: Files: foo-1.txt foo-2.txt foo-3.txt 
