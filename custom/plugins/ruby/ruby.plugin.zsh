@@ -5,7 +5,8 @@ alias r="ruby"
 alias rt="r -v test/test_jekyll_post.rb"
 
 # Fully replace irb by ripl
-alias irb="ripl"
+# alias irb="ripl"
+alias irb="pry"
 alias i="irb"
 
 # Open the pickaxe in Preview.app
