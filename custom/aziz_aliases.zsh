@@ -37,6 +37,10 @@ alias du="du -h -c | egrep 'total'"
 alias ps="ps auxc | head"
 alias -- +x="chmod a+x"
 
+# Taken from:
+# http://osxdaily.com/2011/04/29/show-what-apps-processes-are-use-internet-connection-command-line/
+alias list-apps-and-processes-using-internet="lsof -nPi | cut -f 1 -d \" \"| uniq | tail -n +2"
+
 # in linux, ack is actually ack-grep
 if [[ $OSTYPE[1,6] == 'linux-' ]]; then
   alias ack="ack-grep"
