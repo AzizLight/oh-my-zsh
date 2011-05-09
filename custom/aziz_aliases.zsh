@@ -84,6 +84,9 @@ alias -- -="c -"
 alias wi="which"
 alias wia="which -a"
 
+# Slow train!
+alias sl="nocorrect sl"
+
 # dir shortcuts
 alias www="c ~/Sites"
 alias cs="c ~/Sources"
@@ -104,9 +107,6 @@ elif [[ $OSTYPE[1,6] == 'linux-' ]]; then
   # copy the path to the current folder to the clipboard
   alias pc="builtin pwd|tr -d '\n'|xclip -i"
 fi
-
-# make file(s) executable
-alias x="chmod a+x"
 
 # which
 alias wh="builtin which"
