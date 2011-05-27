@@ -151,3 +151,5 @@ alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 alias ip="curl ifconfig.me"
 
 alias C="ruby ~/Dropbox/bin/C.rb"
+
+alias fire="php $HOME/Sites/codeigniter/fire/fire.php"
