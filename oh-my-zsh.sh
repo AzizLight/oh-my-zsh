@@ -28,6 +28,7 @@ for plugin ($plugins); do
   elif [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
     source $ZSH/plugins/$plugin/$plugin.plugin.zsh
   fi
+done
 
 # automatically remove duplicates from these arrays
 typeset -U path cdpath fpath manpath
