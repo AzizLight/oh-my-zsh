@@ -1,6 +1,6 @@
 # swap ` and ~
-autoload -U swapkeys
-swapkeys \` \~
+# autoload -U swapkeys
+# swapkeys \` \~
 
 # Enable the C-x C-e shortcut to open the VISUAL editor
 #  Doesn't work ...
