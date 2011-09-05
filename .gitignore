@@ -7,3 +7,4 @@ themes/test.zsh-theme
 temp
 cache
 vmail.log
+*.swp
