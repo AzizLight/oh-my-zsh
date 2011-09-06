@@ -5,7 +5,8 @@ source $ZSH/plugins/textmate/textmate.plugin.zsh
 path=($ZSH/custom/plugins/textmate/bin $path)
 
 # Aliases
-alias m.="mate .*"
+alias m="mate"
+alias m.="mate ."
 alias mp="pbpaste | mate"
 
 # Open a directory in Textmate and move into that directory in the terminal
