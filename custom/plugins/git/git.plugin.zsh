@@ -7,7 +7,7 @@ $ '
 alias gcm='git commit -m'
 alias ga='git add .'
 alias gacm='git add . && git commit -m'
-alias gd='git diff'
+alias gd='git difftool'
 alias gs='git status'
 alias gcb="git checkout -b"
 alias gba='git branch -a --color'
