@@ -147,9 +147,11 @@ alias jks="jekyll --server"
 alias c.="c ~/.homesick/repos/"
 alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 
+# ctags
+alias ctags="`brew --prefix`/bin/ctags"
+alias generate_tags="ctags -R --exclude=.git --exclude=log *"
+
 # Get ip address
 alias ip="curl ifconfig.me"
 
 alias C="ruby ~/Dropbox/bin/C.rb"
-
-alias fire="php $HOME/Sites/codeigniter/fire/fire.php"
