@@ -151,6 +151,9 @@ alias s.="homesick symlink .aziz && homesick symlink .dotfiles"
 alias ctags="`brew --prefix`/bin/ctags"
 alias generate_tags="ctags -R --exclude=.git --exclude=log *"
 
+# Use Vim from Homebrew
+alias vim="/usr/local/Cellar/macvim/7.3-64/MacVim.app/Contents/MacOS/Vim"
+
 # Get ip address
 alias ip="curl ifconfig.me"
 
