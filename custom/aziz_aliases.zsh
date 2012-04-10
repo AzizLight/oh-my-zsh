@@ -64,6 +64,7 @@ alias l.='ls -1 -d .[^.]*'  # list hidden files only
 # alias l.="ls -Ad .*" # alternative to the alias above
 alias ll.='ll -h -d .[^.]*' # list hidden files only
 alias "l*"="ls *"
+alias lsa="ls -A"
 
 # the two aliases below were taken from https://github.com/jqr/dotfiles/blob/master/bash_profile.d/standard_improvements.sh
 alias recent='ls -lAt | head'
