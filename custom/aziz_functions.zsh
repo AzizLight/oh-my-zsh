@@ -6,7 +6,7 @@ az_echo_source ()
 
 # pwd with style
 p () {
-	print -P "You are in: %F{cyan}%K{blue}$PWD%f%k\n"
+  print -P "You are in: %F{white}%K{blue}$PWD%f%k\n"
 }
 
 # Copy the path to a file (including the filename)
@@ -20,37 +20,30 @@ pcf () {
 
 # show in which dir I am after a cd
 c () {
-	builtin cd "$@" &&
-	p &&
-	ls -AGF
+  builtin cd "$@" &&
+  p &&
+  ls -AGF
 }
 
 # Make a new dir and move in it
 mk () {
-	command mkdir -p $* &&
-	echo "\n\tFolders created: $fg[green]${*}$fg[default]\n"
+  command mkdir -p $* &&
+  echo "\n\tFolders created: $fg[green]${*}$fg[default]\n"
 }
 
 # Make a new dir and move in it
 mc () {
-	command mkdir -p $1 &&
-	echo "\n\tFolders created: $fg[green]${1}$fg[default]" &&
-	builtin cd $1 &&
-	echo "\nMoved to: $fg[cyan]$bg[blue]`pwd`$fg[default]$bg[default]\n"
+  command mkdir -p $1 &&
+  echo "\n\tFolders created: $fg[green]${1}$fg[default]" &&
+  builtin cd $1 &&
+  echo "\nMoved to: $fg[white]$bg[blue]`pwd`$fg[default]$bg[default]\n"
 }
 
 # rm -rf with nice feedback
 rf () {
-	echo "\n\t$fg[red]Permanently removing ${*}...$fg[default]\n" &&
-	command rm -rf $* &&
-	echo "\n\t$fg[yellow]Items deleted: ${*}\n$fg[yellow]"
-}
-
-# cp -R with nice feedback
-cr () {
-	echo "\n\t$fg[yellow]Copying...\n" &&
-	command cp -R $* &&
-	echo "\n\t$fg[green]Items copied successfully!!$fg[default]\n"
+  echo "\n\t$fg[red]Permanently removing ${*}...$fg[default]\n" &&
+  command rm -rf $* &&
+  echo "\n\t$fg[yellow]Items deleted: ${*}\n$fg[default]"
 }
 
 # Download a file in the current directory using curl
@@ -96,49 +89,49 @@ quickfind () { find . -maxdepth 4 -iname "*$1*" }
 
 # Create a zip archive
 zz () {
-	zip -r $1 $1
+  zip -r $1 $1
 }
 
 # Convert a markdown file in an HTML file
 markdown () { 
-	/Applications/TextMate.app/Contents/SharedSupport/Support/bin/Markdown.pl $1 > $1.html
+  /Applications/TextMate.app/Contents/SharedSupport/Support/bin/Markdown.pl $1 > $1.html
 }
 
 # look up a word
 dict () {
-	curl -s dict://dict.org/d:$1 | perl -ne 's/\r//; last if /^\.$/; print if /^151/../^250/' | more
+  curl -s dict://dict.org/d:$1 | perl -ne 's/\r//; last if /^\.$/; print if /^151/../^250/' | more
 }
 lsdict () {
-	grep "$@" /usr/share/dict/words
+  grep "$@" /usr/share/dict/words
 }
 
 # Create a backup of the file/folder passed as parameter and log the backup in the backup folder
 bak () {
-	date_time=`date +"%F_%H-%M-%S"`
-	bak_dir=$HOME"/.my.backups/${1}.bak"
-	dir=$bak_dir'/'${date_time}
-	
-	command mkdir -p $dir
-	command cp -R $1 $dir
-	
-	# Log 1
-	if [ ! -e $HOME"/.my.backups/backups.log" ]
-	then
-		touch $HOME"/.my.backups/backups.log" &&
-		echo "Backups log\n(Arranged by backup date)\n" >> $HOME"/.my.backups/backups.log"
-	fi
-	echo "${date_time} :\t${dir}\t->\t`pwd`/${1}" >> $HOME"/.my.backups/backups.log"
-	
-	# Log 2
-	if [ ! -e $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER" ]
-	then
-		touch $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER" &&
-		echo "This file contains the path the original file/folder for each backup\n(Arranged by backup date)\n" >> $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER"
-	fi
-	echo "${date_time} :\t`pwd`/${1}" >> $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER"
-	
-	# Feedback
-	echo "\n\t$fg[green]Backup Complete$fg[default]\n"
+  date_time=`date +"%F_%H-%M-%S"`
+  bak_dir=$HOME"/.my.backups/${1}.bak"
+  dir=$bak_dir'/'${date_time}
+  
+  command mkdir -p $dir
+  command cp -R $1 $dir
+  
+  # Log 1
+  if [ ! -e $HOME"/.my.backups/backups.log" ]
+  then
+    touch $HOME"/.my.backups/backups.log" &&
+    echo "Backups log\n(Arranged by backup date)\n" >> $HOME"/.my.backups/backups.log"
+  fi
+  echo "${date_time} :\t${dir}\t->\t`pwd`/${1}" >> $HOME"/.my.backups/backups.log"
+  
+  # Log 2
+  if [ ! -e $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER" ]
+  then
+    touch $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER" &&
+    echo "This file contains the path the original file/folder for each backup\n(Arranged by backup date)\n" >> $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER"
+  fi
+  echo "${date_time} :\t`pwd`/${1}" >> $bak_dir"/PATH_OF_ORIGINAL_FILE_OR_FOLDER"
+  
+  # Feedback
+  echo "\n\t$fg[green]Backup Complete$fg[default]\n"
 }
 
 # Less radical alternative to the backup function above
@@ -180,25 +173,25 @@ function isreg {
 
 # return the length of the string passed as argument
 count () {
-	echo ${#1}
+  echo ${#1}
 }
 
 # Display the Internal and External IPs
 getip () {
-	echo -n "Internal IP: "
-	ifconfig en1 | awk '/inet /&&!/127.0.0.1/{sub(/^[^:]+:/,"",$2); print $2}'
-	echo -n "External IP: "
-	curl icanhazip.com
+  echo -n "Internal IP: "
+  ifconfig en1 | awk '/inet /&&!/127.0.0.1/{sub(/^[^:]+:/,"",$2); print $2}'
+  echo -n "External IP: "
+  curl icanhazip.com
 }
 
 # List all available zsh colors
 showcolors () {
-	print -l ${(k)fg}
+  print -l ${(k)fg}
 }
 
 # List & display all 256 colors
 showcolors256 () {
-	for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
+  for code in {0..255}; do echo -e "\e[38;05;${code}m $code: Test"; done
 }
 
 # search for various types or README file in dir and display them in $PAGER
